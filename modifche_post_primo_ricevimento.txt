@@ -1,0 +1,32 @@
+Correzioni post primo ricevimento.
+Oggetto di correzione: BPMN generale per la doucmentazione.
+
+1) Frecce doppie
+2) risolvere reservation
+3) processo loop di gestione delle fatture --> RISOLTO:
+   abbiamo tolto il boundary event perchè nel processo loop esiste
+   gia la considzione di uscita. 
+
+Sulle scelte progettuali:
+( 1)reservation 2)gestione interna da parte di Acme dei luoghi 
+3)sottoprocesso fatture )
+In accordo con il prof.
+
+
+Modifca: 
+1) Bank process spostato nel file bank.bpmn e pool bank
+nel bpmn generale collassata.
+ 
+2) Client Pool: dopo che il cliente riceve la lista delle conferenze 
+esegue un user task (molto probabilmente per semplificare il tutto
+un form con la lista delle conferenze e altre due opzioni, cioe 
+richiedere tale lista, oppure non selezionarne nessuna) dopo di ciò
+viene controllata la scelta tramite l'exclusive gateway.
+   ACME Pool: quindi abbiamo splittato gli intermediate event anche
+nella pool acme visto che due messaggi non possono essere ricevuti 
+nello stesso intermediate catch message event. Abbiamo quindi gestito
+con un gateway event based --> ?? scelta giusta ??. Gestione degli
+errori ?!?
+
+2) Risoluzione delle frecce doppie --> non si ammettono frecce doppie
+3) Reservation!!! Prestare attenzione!
