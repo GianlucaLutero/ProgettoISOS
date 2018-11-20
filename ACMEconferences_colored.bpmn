@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0bwi6e3" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_0bwi6e3" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
   <bpmn:collaboration id="Collaboration_1telxth">
     <bpmn:participant id="Participant_0aoje85" name="Client" processRef="Process_1" />
     <bpmn:participant id="Participant_01rcm6n" name="ACME Conference" processRef="Process_0y3upxt" />
@@ -1250,7 +1250,7 @@
       <bpmndi:BPMNShape id="SendTask_1e30ziz_di" bpmnElement="Task_0ay6d19">
         <dc:Bounds x="1332" y="1127" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_0f5q0qw_di" bpmnElement="Participant_0f5q0qw">
+      <bpmndi:BPMNShape id="Participant_0f5q0qw_di" bpmnElement="Participant_0f5q0qw" bioc:stroke="#1E88E5" bioc:fill="#BBDEFB">
         <dc:Bounds x="189" y="2217" width="4682" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_1f4czl8_di" bpmnElement="IntermediateThrowEvent_0ygpefd">
@@ -1341,7 +1341,7 @@
           <dc:Bounds x="2065" y="1118" width="50" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_0whbq7b_di" bpmnElement="MessageFlow_0whbq7b">
+      <bpmndi:BPMNEdge id="MessageFlow_0whbq7b_di" bpmnElement="MessageFlow_0whbq7b" bioc:stroke="#1E88E5" bioc:fill="#BBDEFB">
         <di:waypoint x="2090" y="2217" />
         <di:waypoint x="2090" y="1185" />
       </bpmndi:BPMNEdge>
@@ -1395,14 +1395,14 @@
       <bpmndi:BPMNShape id="SendTask_08ny9b8_di" bpmnElement="Task_1klmw93">
         <dc:Bounds x="2760" y="1121" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_0yq64my_di" bpmnElement="Participant_0yq64my">
+      <bpmndi:BPMNShape id="Participant_0yq64my_di" bpmnElement="Participant_0yq64my" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <dc:Bounds x="189" y="2410" width="4686" height="128" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_14u8of3_di" bpmnElement="MessageFlow_14u8of3">
+      <bpmndi:BPMNEdge id="MessageFlow_14u8of3_di" bpmnElement="MessageFlow_14u8of3" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <di:waypoint x="2810" y="1201" />
         <di:waypoint x="2810" y="2410" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_0903rlo_di" bpmnElement="MessageFlow_0903rlo">
+      <bpmndi:BPMNEdge id="MessageFlow_0903rlo_di" bpmnElement="MessageFlow_0903rlo" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <di:waypoint x="2925" y="2410" />
         <di:waypoint x="2925" y="1179" />
       </bpmndi:BPMNEdge>
@@ -1416,7 +1416,7 @@
       <bpmndi:BPMNShape id="SendTask_0zw4ywz_di" bpmnElement="Task_1byo7s1">
         <dc:Bounds x="3504" y="1201" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_0nv84im_di" bpmnElement="MessageFlow_0nv84im">
+      <bpmndi:BPMNEdge id="MessageFlow_0nv84im_di" bpmnElement="MessageFlow_0nv84im" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <di:waypoint x="3554" y="1281" />
         <di:waypoint x="3554" y="2410" />
       </bpmndi:BPMNEdge>
@@ -1905,7 +1905,7 @@
       <bpmndi:BPMNShape id="ServiceTask_1si5eoi_di" bpmnElement="Task_0lbdj4r">
         <dc:Bounds x="1936" y="1127" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_0noc566_di" bpmnElement="MessageFlow_0noc566">
+      <bpmndi:BPMNEdge id="MessageFlow_0noc566_di" bpmnElement="MessageFlow_0noc566" bioc:stroke="#1E88E5" bioc:fill="#BBDEFB">
         <di:waypoint x="1986" y="1207" />
         <di:waypoint x="1986" y="2217" />
       </bpmndi:BPMNEdge>
@@ -1988,22 +1988,22 @@
       <bpmndi:BPMNShape id="EndEvent_1bso9hi_di" bpmnElement="EndEvent_1bso9hi">
         <dc:Bounds x="2422" y="3437" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_0msrcz5_di" bpmnElement="Participant_0msrcz5">
+      <bpmndi:BPMNShape id="Participant_0msrcz5_di" bpmnElement="Participant_0msrcz5" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <dc:Bounds x="189" y="1983" width="4672" height="156" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="MessageFlow_0ln57m4_di" bpmnElement="MessageFlow_0ln57m4">
+      <bpmndi:BPMNEdge id="MessageFlow_0ln57m4_di" bpmnElement="MessageFlow_0ln57m4" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="3966" y="1983" />
         <di:waypoint x="3966" y="85" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_0lrhaot_di" bpmnElement="MessageFlow_0lrhaot">
+      <bpmndi:BPMNEdge id="MessageFlow_0lrhaot_di" bpmnElement="MessageFlow_0lrhaot" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="2158" y="2139" />
         <di:waypoint x="2158" y="2890" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_0bw4hve_di" bpmnElement="MessageFlow_0bw4hve">
+      <bpmndi:BPMNEdge id="MessageFlow_0bw4hve_di" bpmnElement="MessageFlow_0bw4hve" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="4414" y="1983" />
         <di:waypoint x="4414" y="1181" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_00pny6a_di" bpmnElement="MessageFlow_00pny6a">
+      <bpmndi:BPMNEdge id="MessageFlow_00pny6a_di" bpmnElement="MessageFlow_00pny6a" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="4494" y="1983" />
         <di:waypoint x="4494" y="1870" />
         <di:waypoint x="4683" y="1870" />
@@ -2011,15 +2011,15 @@
         <di:waypoint x="4494" y="1042" />
         <di:waypoint x="4494" y="832" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_1w7334h_di" bpmnElement="MessageFlow_1w7334h">
+      <bpmndi:BPMNEdge id="MessageFlow_1w7334h_di" bpmnElement="MessageFlow_1w7334h" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="4288" y="1203" />
         <di:waypoint x="4288" y="1983" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_00gqoes_di" bpmnElement="MessageFlow_00gqoes">
+      <bpmndi:BPMNEdge id="MessageFlow_00gqoes_di" bpmnElement="MessageFlow_00gqoes" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="3848" y="107" />
         <di:waypoint x="3848" y="1983" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_1mevwbc_di" bpmnElement="MessageFlow_1mevwbc">
+      <bpmndi:BPMNEdge id="MessageFlow_1mevwbc_di" bpmnElement="MessageFlow_1mevwbc" bioc:stroke="#43A047" bioc:fill="#C8E6C9">
         <di:waypoint x="2028" y="2868" />
         <di:waypoint x="2028" y="2139" />
       </bpmndi:BPMNEdge>
