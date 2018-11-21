@@ -48,95 +48,52 @@
     <bpmn:messageFlow id="MessageFlow_01rtoir" sourceRef="EndEvent_04l9dqg" targetRef="IntermediateCatchEvent_1isnopj" />
     <bpmn:messageFlow id="MessageFlow_1sfeswz" sourceRef="Task_0mhliha" targetRef="StartEvent_0hvezjn" />
     <bpmn:messageFlow id="MessageFlow_1wqs3cs" sourceRef="Task_17cgi0r" targetRef="IntermediateThrowEvent_17qu6as" />
+    <bpmn:messageFlow id="MessageFlow_16nghq9" sourceRef="Task_1s6ova1" targetRef="IntermediateThrowEvent_0cqhmhj" />
   </bpmn:collaboration>
   <bpmn:process id="Process_1" isExecutable="true">
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0lmqqdj">
-      <bpmn:incoming>SequenceFlow_0fjym09</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_073iob0</bpmn:outgoing>
-      <bpmn:timerEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:endEvent id="EndEvent_1eiewba">
-      <bpmn:incoming>SequenceFlow_073iob0</bpmn:incoming>
-      <bpmn:errorEventDefinition />
-    </bpmn:endEvent>
-    <bpmn:endEvent id="EndEvent_0uveupt">
-      <bpmn:incoming>SequenceFlow_016emne</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0mmiwkh" name="wait negative acme response">
-      <bpmn:incoming>SequenceFlow_12ibobw</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_016emne</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sendTask id="Task_0nxj511" name="Calculate total">
-      <bpmn:incoming>SequenceFlow_0scvjs5</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0d2faun</bpmn:outgoing>
-    </bpmn:sendTask>
-    <bpmn:endEvent id="EndEvent_1hg3g0g">
-      <bpmn:incoming>SequenceFlow_0d2faun</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:eventBasedGateway id="ExclusiveGateway_1sdn8uu">
-      <bpmn:incoming>SequenceFlow_1mhzstk</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_03r0ftb</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0fjym09</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_12ibobw</bpmn:outgoing>
-    </bpmn:eventBasedGateway>
-    <bpmn:exclusiveGateway id="ExclusiveGateway_19mnqoj">
-      <bpmn:incoming>SequenceFlow_0h2jpx7</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0dxiev5</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0950sck</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_001afks" name="Wait platform creation">
-      <bpmn:incoming>SequenceFlow_1mdgpkl</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0h2jpx7</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:inclusiveGateway id="ExclusiveGateway_1bihojc" default="SequenceFlow_1mdgpkl">
-      <bpmn:incoming>SequenceFlow_1ardciv</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1kr8ajx</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_1mdgpkl</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:sendTask id="Task_1y6fmyv" name="Send create conference request">
-      <bpmn:incoming>SequenceFlow_08h8mbd</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1mhzstk</bpmn:outgoing>
-    </bpmn:sendTask>
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>SequenceFlow_08h8mbd</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_08zcxsr" name="wait positive acme response ">
-      <bpmn:incoming>SequenceFlow_03r0ftb</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0yrnssj</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sendTask id="Task_1ilnlnf" name="Send Conference Details">
-      <bpmn:incoming>SequenceFlow_08le765</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ardciv</bpmn:outgoing>
-    </bpmn:sendTask>
-    <bpmn:userTask id="Task_0ssjk5m" name="Insert Conference Details">
-      <bpmn:incoming>SequenceFlow_0yrnssj</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_0950sck</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_08le765</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:subProcess id="SubProcess_12i3fql" name="Send Invoice">
-      <bpmn:incoming>SequenceFlow_0dxiev5</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0scvjs5</bpmn:outgoing>
-      <bpmn:standardLoopCharacteristics />
-      <bpmn:userTask id="Task_1ni6uxl" name="Insert conference expenses invoice">
-        <bpmn:incoming>SequenceFlow_1ytr1qe</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_198aesn</bpmn:outgoing>
-      </bpmn:userTask>
-      <bpmn:sendTask id="Task_06f66cs" name="Send conference expenses invoice">
-        <bpmn:incoming>SequenceFlow_198aesn</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_15bbmhq</bpmn:outgoing>
+    <bpmn:sequenceFlow id="SequenceFlow_0yrnssj" sourceRef="IntermediateThrowEvent_08zcxsr" targetRef="Task_0ssjk5m" />
+    <bpmn:sequenceFlow id="SequenceFlow_12ibobw" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateCatchEvent_0mmiwkh" />
+    <bpmn:sequenceFlow id="SequenceFlow_03r0ftb" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateThrowEvent_08zcxsr" />
+    <bpmn:sequenceFlow id="SequenceFlow_0950sck" name="platform not created" sourceRef="ExclusiveGateway_19mnqoj" targetRef="Task_0ssjk5m" />
+    <bpmn:sequenceFlow id="SequenceFlow_0dxiev5" name="platform created" sourceRef="ExclusiveGateway_19mnqoj" targetRef="SubProcess_12i3fql" />
+    <bpmn:sequenceFlow id="SequenceFlow_0h2jpx7" sourceRef="IntermediateThrowEvent_001afks" targetRef="ExclusiveGateway_19mnqoj" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mdgpkl" sourceRef="ExclusiveGateway_1bihojc" targetRef="IntermediateThrowEvent_001afks" />
+    <bpmn:sequenceFlow id="SequenceFlow_1kr8ajx" name="All inclusive" sourceRef="ExclusiveGateway_1bihojc" targetRef="SubProcess_0cxxc1w" />
+    <bpmn:sequenceFlow id="SequenceFlow_08le765" sourceRef="Task_0ssjk5m" targetRef="Task_1ilnlnf" />
+    <bpmn:sequenceFlow id="SequenceFlow_08h8mbd" sourceRef="StartEvent_1" targetRef="Task_1y6fmyv" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ardciv" sourceRef="Task_1ilnlnf" targetRef="ExclusiveGateway_1bihojc" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mhzstk" sourceRef="Task_1y6fmyv" targetRef="ExclusiveGateway_1sdn8uu" />
+    <bpmn:sequenceFlow id="SequenceFlow_016emne" sourceRef="IntermediateCatchEvent_0mmiwkh" targetRef="EndEvent_0uveupt" />
+    <bpmn:sequenceFlow id="SequenceFlow_0scvjs5" sourceRef="SubProcess_12i3fql" targetRef="Task_0nxj511" />
+    <bpmn:sequenceFlow id="SequenceFlow_0d2faun" sourceRef="Task_0nxj511" targetRef="EndEvent_1hg3g0g" />
+    <bpmn:subProcess id="SubProcess_1gci4s9" triggeredByEvent="true">
+      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1rwue67" name="wait payment request">
+        <bpmn:outgoing>SequenceFlow_0n7f1hx</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_11x4sby" />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_0n7f1hx" sourceRef="IntermediateThrowEvent_1rwue67" targetRef="Task_1jcwtej" />
+      <bpmn:sequenceFlow id="SequenceFlow_0pkgtjj" sourceRef="Task_1jcwtej" targetRef="IntermediateThrowEvent_1kernn4" />
+      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1kernn4" name="wait for payment result">
+        <bpmn:incoming>SequenceFlow_0pkgtjj</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0t0kdj4</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_050i3fi" />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sendTask id="Task_1jcwtej" name="Send Money">
+        <bpmn:incoming>SequenceFlow_0n7f1hx</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_0dg4bql</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0pkgtjj</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:sequenceFlow id="SequenceFlow_198aesn" sourceRef="Task_1ni6uxl" targetRef="Task_06f66cs" />
-      <bpmn:startEvent id="StartEvent_160zcv3">
-        <bpmn:outgoing>SequenceFlow_1ytr1qe</bpmn:outgoing>
-      </bpmn:startEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1ytr1qe" sourceRef="StartEvent_160zcv3" targetRef="Task_1ni6uxl" />
-      <bpmn:endEvent id="EndEvent_1q97wnj">
-        <bpmn:incoming>SequenceFlow_15bbmhq</bpmn:incoming>
+      <bpmn:exclusiveGateway id="ExclusiveGateway_0xhc4im">
+        <bpmn:incoming>SequenceFlow_0t0kdj4</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0dg4bql</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_1s1811k</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="SequenceFlow_0t0kdj4" sourceRef="IntermediateThrowEvent_1kernn4" targetRef="ExclusiveGateway_0xhc4im" />
+      <bpmn:sequenceFlow id="SequenceFlow_0dg4bql" name="paymend denied" sourceRef="ExclusiveGateway_0xhc4im" targetRef="Task_1jcwtej" />
+      <bpmn:endEvent id="EndEvent_03580gx">
+        <bpmn:incoming>SequenceFlow_1s1811k</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_15bbmhq" sourceRef="Task_06f66cs" targetRef="EndEvent_1q97wnj" />
+      <bpmn:sequenceFlow id="SequenceFlow_1s1811k" name="payment accepted" sourceRef="ExclusiveGateway_0xhc4im" targetRef="EndEvent_03580gx" />
     </bpmn:subProcess>
     <bpmn:subProcess id="SubProcess_0cxxc1w" name="All inclusive">
       <bpmn:incoming>SequenceFlow_1kr8ajx</bpmn:incoming>
@@ -187,60 +144,88 @@
       <bpmn:sequenceFlow id="SequenceFlow_013bxxj" sourceRef="Task_0mhliha" targetRef="IntermediateThrowEvent_0ygpefd" />
       <bpmn:sequenceFlow id="SequenceFlow_0932g8i" sourceRef="StartEvent_0yvq4k5" targetRef="Task_0mhliha" />
     </bpmn:subProcess>
-    <bpmn:subProcess id="SubProcess_1gci4s9" triggeredByEvent="true">
-      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1rwue67" name="wait payment request">
-        <bpmn:outgoing>SequenceFlow_0n7f1hx</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_11x4sby" />
-      </bpmn:intermediateCatchEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_0n7f1hx" sourceRef="IntermediateThrowEvent_1rwue67" targetRef="Task_1jcwtej" />
-      <bpmn:sequenceFlow id="SequenceFlow_0pkgtjj" sourceRef="Task_1jcwtej" targetRef="IntermediateThrowEvent_1kernn4" />
-      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1kernn4" name="wait for payment result">
-        <bpmn:incoming>SequenceFlow_0pkgtjj</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0t0kdj4</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_050i3fi" />
-      </bpmn:intermediateCatchEvent>
-      <bpmn:sendTask id="Task_1jcwtej" name="Send Money">
-        <bpmn:incoming>SequenceFlow_0n7f1hx</bpmn:incoming>
-        <bpmn:incoming>SequenceFlow_0dg4bql</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0pkgtjj</bpmn:outgoing>
+    <bpmn:subProcess id="SubProcess_12i3fql" name="Send Invoice">
+      <bpmn:incoming>SequenceFlow_0dxiev5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0scvjs5</bpmn:outgoing>
+      <bpmn:standardLoopCharacteristics />
+      <bpmn:userTask id="Task_1ni6uxl" name="Insert conference expenses invoice">
+        <bpmn:incoming>SequenceFlow_1ytr1qe</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_198aesn</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sendTask id="Task_06f66cs" name="Send conference expenses invoice">
+        <bpmn:incoming>SequenceFlow_198aesn</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_15bbmhq</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:exclusiveGateway id="ExclusiveGateway_0xhc4im">
-        <bpmn:incoming>SequenceFlow_0t0kdj4</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0dg4bql</bpmn:outgoing>
-        <bpmn:outgoing>SequenceFlow_1s1811k</bpmn:outgoing>
-      </bpmn:exclusiveGateway>
-      <bpmn:sequenceFlow id="SequenceFlow_0t0kdj4" sourceRef="IntermediateThrowEvent_1kernn4" targetRef="ExclusiveGateway_0xhc4im" />
-      <bpmn:sequenceFlow id="SequenceFlow_0dg4bql" name="paymend denied" sourceRef="ExclusiveGateway_0xhc4im" targetRef="Task_1jcwtej" />
-      <bpmn:endEvent id="EndEvent_03580gx">
-        <bpmn:incoming>SequenceFlow_1s1811k</bpmn:incoming>
+      <bpmn:sequenceFlow id="SequenceFlow_198aesn" sourceRef="Task_1ni6uxl" targetRef="Task_06f66cs" />
+      <bpmn:startEvent id="StartEvent_160zcv3">
+        <bpmn:outgoing>SequenceFlow_1ytr1qe</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1ytr1qe" sourceRef="StartEvent_160zcv3" targetRef="Task_1ni6uxl" />
+      <bpmn:endEvent id="EndEvent_1q97wnj">
+        <bpmn:incoming>SequenceFlow_15bbmhq</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1s1811k" name="payment accepted" sourceRef="ExclusiveGateway_0xhc4im" targetRef="EndEvent_03580gx" />
+      <bpmn:sequenceFlow id="SequenceFlow_15bbmhq" sourceRef="Task_06f66cs" targetRef="EndEvent_1q97wnj" />
     </bpmn:subProcess>
-    <bpmn:sequenceFlow id="SequenceFlow_0fjym09" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateCatchEvent_0lmqqdj" />
-    <bpmn:sequenceFlow id="SequenceFlow_0yrnssj" sourceRef="IntermediateThrowEvent_08zcxsr" targetRef="Task_0ssjk5m" />
-    <bpmn:sequenceFlow id="SequenceFlow_12ibobw" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateCatchEvent_0mmiwkh" />
-    <bpmn:sequenceFlow id="SequenceFlow_03r0ftb" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateThrowEvent_08zcxsr" />
-    <bpmn:sequenceFlow id="SequenceFlow_0950sck" name="platform not created" sourceRef="ExclusiveGateway_19mnqoj" targetRef="Task_0ssjk5m" />
-    <bpmn:sequenceFlow id="SequenceFlow_0dxiev5" name="platform created" sourceRef="ExclusiveGateway_19mnqoj" targetRef="SubProcess_12i3fql" />
-    <bpmn:sequenceFlow id="SequenceFlow_0h2jpx7" sourceRef="IntermediateThrowEvent_001afks" targetRef="ExclusiveGateway_19mnqoj" />
-    <bpmn:sequenceFlow id="SequenceFlow_1mdgpkl" sourceRef="ExclusiveGateway_1bihojc" targetRef="IntermediateThrowEvent_001afks" />
-    <bpmn:sequenceFlow id="SequenceFlow_1kr8ajx" name="All inclusive" sourceRef="ExclusiveGateway_1bihojc" targetRef="SubProcess_0cxxc1w" />
-    <bpmn:sequenceFlow id="SequenceFlow_08le765" sourceRef="Task_0ssjk5m" targetRef="Task_1ilnlnf" />
-    <bpmn:sequenceFlow id="SequenceFlow_08h8mbd" sourceRef="StartEvent_1" targetRef="Task_1y6fmyv" />
-    <bpmn:sequenceFlow id="SequenceFlow_1ardciv" sourceRef="Task_1ilnlnf" targetRef="ExclusiveGateway_1bihojc" />
-    <bpmn:sequenceFlow id="SequenceFlow_1mhzstk" sourceRef="Task_1y6fmyv" targetRef="ExclusiveGateway_1sdn8uu" />
-    <bpmn:sequenceFlow id="SequenceFlow_073iob0" sourceRef="IntermediateCatchEvent_0lmqqdj" targetRef="EndEvent_1eiewba" />
-    <bpmn:sequenceFlow id="SequenceFlow_016emne" sourceRef="IntermediateCatchEvent_0mmiwkh" targetRef="EndEvent_0uveupt" />
-    <bpmn:sequenceFlow id="SequenceFlow_0scvjs5" sourceRef="SubProcess_12i3fql" targetRef="Task_0nxj511" />
-    <bpmn:sequenceFlow id="SequenceFlow_0d2faun" sourceRef="Task_0nxj511" targetRef="EndEvent_1hg3g0g" />
+    <bpmn:userTask id="Task_0ssjk5m" name="Insert Conference Details">
+      <bpmn:incoming>SequenceFlow_0yrnssj</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0950sck</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_08le765</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sendTask id="Task_1ilnlnf" name="Send Conference Details">
+      <bpmn:incoming>SequenceFlow_08le765</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ardciv</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_08zcxsr" name="wait positive acme response ">
+      <bpmn:incoming>SequenceFlow_03r0ftb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0yrnssj</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_08h8mbd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sendTask id="Task_1y6fmyv" name="Send create conference request">
+      <bpmn:incoming>SequenceFlow_08h8mbd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1mhzstk</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:inclusiveGateway id="ExclusiveGateway_1bihojc" default="SequenceFlow_1mdgpkl">
+      <bpmn:incoming>SequenceFlow_1ardciv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1kr8ajx</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1mdgpkl</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_001afks" name="Wait platform creation">
+      <bpmn:incoming>SequenceFlow_1mdgpkl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0h2jpx7</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_19mnqoj">
+      <bpmn:incoming>SequenceFlow_0h2jpx7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0dxiev5</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0950sck</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:eventBasedGateway id="ExclusiveGateway_1sdn8uu">
+      <bpmn:incoming>SequenceFlow_1mhzstk</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_03r0ftb</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_12ibobw</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:endEvent id="EndEvent_1hg3g0g">
+      <bpmn:incoming>SequenceFlow_0d2faun</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="Task_0nxj511" name="Calculate total">
+      <bpmn:incoming>SequenceFlow_0scvjs5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0d2faun</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0mmiwkh" name="wait negative acme response">
+      <bpmn:incoming>SequenceFlow_12ibobw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_016emne</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="EndEvent_0uveupt">
+      <bpmn:incoming>SequenceFlow_016emne</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:association id="Association_0nx36ok" sourceRef="SubProcess_12i3fql" targetRef="TextAnnotation_1etkz0m" />
     <bpmn:textAnnotation id="TextAnnotation_1etkz0m">
       <bpmn:text>Scelta progettuale: la creazione della piattaforma implica l'inizio di questo processo. Il cliente puo cominciare a richiedere il pagamento di fatture ad ACME solo dopo che la piattaforma sia creata.</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:textAnnotation id="TextAnnotation_0d680tb">
-      <bpmn:text>TO DO: ha senso??</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_00203tj" sourceRef="EndEvent_1eiewba" targetRef="TextAnnotation_0d680tb" />
-    <bpmn:association id="Association_0nx36ok" sourceRef="SubProcess_12i3fql" targetRef="TextAnnotation_1etkz0m" />
   </bpmn:process>
   <bpmn:process id="Process_0y3upxt" isExecutable="false">
     <bpmn:sequenceFlow id="SequenceFlow_1p0wot2" sourceRef="Task_12gkros" targetRef="IntermediateThrowEvent_1i3b8ug" />
@@ -681,6 +666,21 @@
       <bpmn:incoming>SequenceFlow_03c6e22</bpmn:incoming>
       <bpmn:messageEventDefinition />
     </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_03c6e22" sourceRef="BoundaryEvent_0x8q7n7" targetRef="EndEvent_1q35jrj" />
+    <bpmn:sequenceFlow id="SequenceFlow_0aljm3b" sourceRef="IntermediateThrowEvent_1hugckc" targetRef="Task_0i7fh6m" />
+    <bpmn:sequenceFlow id="SequenceFlow_0gmmgxn" sourceRef="ExclusiveGateway_086daac" targetRef="SubProcess_0p1r0qm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xltq1g" sourceRef="Task_0i7fh6m" targetRef="ExclusiveGateway_086daac" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ks6tvh" sourceRef="Task_00ju9ee" targetRef="IntermediateThrowEvent_1hugckc" />
+    <bpmn:sequenceFlow id="SequenceFlow_1huse82" sourceRef="IntermediateThrowEvent_0a0ohuq" targetRef="Task_00ju9ee" />
+    <bpmn:sequenceFlow id="SequenceFlow_1kjlw1o" sourceRef="IntermediateThrowEvent_0xtufg3" targetRef="Task_0n6t88g" />
+    <bpmn:sequenceFlow id="SequenceFlow_05dpncg" sourceRef="Task_0n6t88g" targetRef="EndEvent_05r37mv" />
+    <bpmn:sequenceFlow id="SequenceFlow_18szv8b" name="Conference full" sourceRef="ExclusiveGateway_086daac" targetRef="EndEvent_17rn2fw" />
+    <bpmn:sequenceFlow id="SequenceFlow_02zrnga" sourceRef="IntermediateThrowEvent_03bbwxw" targetRef="Task_1l53al5" />
+    <bpmn:sequenceFlow id="SequenceFlow_137q808" sourceRef="Task_1l53al5" targetRef="EndEvent_0ltzs68" />
+    <bpmn:boundaryEvent id="BoundaryEvent_0x8q7n7" name="Time Out Session" attachedToRef="SubProcess_0p1r0qm">
+      <bpmn:outgoing>SequenceFlow_03c6e22</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:boundaryEvent>
     <bpmn:subProcess id="SubProcess_0p1r0qm" name="Reservation">
       <bpmn:incoming>SequenceFlow_0gmmgxn</bpmn:incoming>
       <bpmn:startEvent id="StartEvent_02382lf">
@@ -702,6 +702,7 @@
       <bpmn:sequenceFlow id="SequenceFlow_0jcplt8" sourceRef="IntermediateThrowEvent_0a0kv7f" targetRef="Task_1taqvxp" />
       <bpmn:sendTask id="Task_1taqvxp" name="Execute Payment">
         <bpmn:incoming>SequenceFlow_0jcplt8</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_1i1cqe5</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0ki5e0a</bpmn:outgoing>
       </bpmn:sendTask>
       <bpmn:sequenceFlow id="SequenceFlow_0ki5e0a" sourceRef="Task_1taqvxp" targetRef="IntermediateThrowEvent_1ufkwup" />
@@ -730,35 +731,29 @@
         <bpmn:outgoing>SequenceFlow_09er895</bpmn:outgoing>
       </bpmn:task>
       <bpmn:sequenceFlow id="SequenceFlow_09er895" sourceRef="Task_068qiz5" targetRef="EndEvent_192b57g" />
-      <bpmn:sequenceFlow id="SequenceFlow_1xlu1b1" sourceRef="ExclusiveGateway_1k4ie0s" targetRef="EndEvent_04l9dqg" />
-      <bpmn:endEvent id="EndEvent_04l9dqg" name="Payment failed">
-        <bpmn:incoming>SequenceFlow_1xlu1b1</bpmn:incoming>
+      <bpmn:sequenceFlow id="SequenceFlow_1xlu1b1" sourceRef="ExclusiveGateway_1k4ie0s" targetRef="ExclusiveGateway_12ipzpn" />
+      <bpmn:intermediateThrowEvent id="EndEvent_04l9dqg" name="Payment failed">
+        <bpmn:incoming>SequenceFlow_1cjgzwa</bpmn:incoming>
         <bpmn:messageEventDefinition />
-      </bpmn:endEvent>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1cjgzwa" sourceRef="ExclusiveGateway_12ipzpn" targetRef="EndEvent_04l9dqg" />
+      <bpmn:parallelGateway id="ExclusiveGateway_12ipzpn">
+        <bpmn:incoming>SequenceFlow_1xlu1b1</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1cjgzwa</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_1we54wb</bpmn:outgoing>
+      </bpmn:parallelGateway>
+      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0cqhmhj" name="Wait retry payment">
+        <bpmn:incoming>SequenceFlow_1we54wb</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1i1cqe5</bpmn:outgoing>
+        <bpmn:messageEventDefinition />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_1we54wb" sourceRef="ExclusiveGateway_12ipzpn" targetRef="IntermediateThrowEvent_0cqhmhj" />
+      <bpmn:sequenceFlow id="SequenceFlow_1i1cqe5" sourceRef="IntermediateThrowEvent_0cqhmhj" targetRef="Task_1taqvxp" />
       <bpmn:textAnnotation id="TextAnnotation_0ob4581">
         <bpmn:text>Scala temporaneamente il numero di posti disponibili riservandolo al partecipante che ha la sessione aperta</bpmn:text>
       </bpmn:textAnnotation>
       <bpmn:association id="Association_1sdhkby" sourceRef="Task_17cgi0r" targetRef="TextAnnotation_0ob4581" />
-      <bpmn:textAnnotation id="TextAnnotation_13tegy6">
-        <bpmn:text>E' corretto???</bpmn:text>
-      </bpmn:textAnnotation>
-      <bpmn:association id="Association_01vbyqf" sourceRef="EndEvent_04l9dqg" targetRef="TextAnnotation_13tegy6" />
     </bpmn:subProcess>
-    <bpmn:boundaryEvent id="BoundaryEvent_0x8q7n7" name="Time Out Session" attachedToRef="SubProcess_0p1r0qm">
-      <bpmn:outgoing>SequenceFlow_03c6e22</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_03c6e22" sourceRef="BoundaryEvent_0x8q7n7" targetRef="EndEvent_1q35jrj" />
-    <bpmn:sequenceFlow id="SequenceFlow_0aljm3b" sourceRef="IntermediateThrowEvent_1hugckc" targetRef="Task_0i7fh6m" />
-    <bpmn:sequenceFlow id="SequenceFlow_0gmmgxn" sourceRef="ExclusiveGateway_086daac" targetRef="SubProcess_0p1r0qm" />
-    <bpmn:sequenceFlow id="SequenceFlow_1xltq1g" sourceRef="Task_0i7fh6m" targetRef="ExclusiveGateway_086daac" />
-    <bpmn:sequenceFlow id="SequenceFlow_0ks6tvh" sourceRef="Task_00ju9ee" targetRef="IntermediateThrowEvent_1hugckc" />
-    <bpmn:sequenceFlow id="SequenceFlow_1huse82" sourceRef="IntermediateThrowEvent_0a0ohuq" targetRef="Task_00ju9ee" />
-    <bpmn:sequenceFlow id="SequenceFlow_1kjlw1o" sourceRef="IntermediateThrowEvent_0xtufg3" targetRef="Task_0n6t88g" />
-    <bpmn:sequenceFlow id="SequenceFlow_05dpncg" sourceRef="Task_0n6t88g" targetRef="EndEvent_05r37mv" />
-    <bpmn:sequenceFlow id="SequenceFlow_18szv8b" name="Conference full" sourceRef="ExclusiveGateway_086daac" targetRef="EndEvent_17rn2fw" />
-    <bpmn:sequenceFlow id="SequenceFlow_02zrnga" sourceRef="IntermediateThrowEvent_03bbwxw" targetRef="Task_1l53al5" />
-    <bpmn:sequenceFlow id="SequenceFlow_137q808" sourceRef="Task_1l53al5" targetRef="EndEvent_0ltzs68" />
     <bpmn:textAnnotation id="TextAnnotation_142onia">
       <bpmn:text>Viene fatto interamente il controllo della terminazione delle prenotazioni entro il primo giorno dall'inizio della conferenza</bpmn:text>
     </bpmn:textAnnotation>
@@ -773,12 +768,6 @@
     <bpmn:startEvent id="StartEvent_1dqo7cg" name="sign up for conference">
       <bpmn:outgoing>SequenceFlow_1m335hf</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_0mtfoyz">
-      <bpmn:incoming>SequenceFlow_1ur99qd</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:endEvent id="EndEvent_1bso9hi">
-      <bpmn:incoming>SequenceFlow_04v487h</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sendTask id="Task_15cdxxd" name="Get Conferences">
       <bpmn:incoming>SequenceFlow_1m335hf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_12r4r3q</bpmn:outgoing>
@@ -819,30 +808,15 @@
     </bpmn:sendTask>
     <bpmn:sendTask id="Task_0onxanw" name="Payment">
       <bpmn:incoming>SequenceFlow_0zvze0s</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_0echil0</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1e8fz87</bpmn:outgoing>
     </bpmn:sendTask>
     <bpmn:eventBasedGateway id="ExclusiveGateway_0uwdo2j">
       <bpmn:incoming>SequenceFlow_1e8fz87</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1oc8pbx</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1raoigz</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_1bcb0wm</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_09zgwsm</bpmn:outgoing>
     </bpmn:eventBasedGateway>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1isnopj" name="failed payment ">
-      <bpmn:incoming>SequenceFlow_09zgwsm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0echil0</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0fqs1ex" name="wait payment response">
-      <bpmn:incoming>SequenceFlow_1raoigz</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_04v487h</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_03su3es" name="Session Expired">
-      <bpmn:incoming>SequenceFlow_1bcb0wm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ur99qd</bpmn:outgoing>
-      <bpmn:messageEventDefinition />
-    </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0zvze0s" sourceRef="Task_0d08fho" targetRef="Task_0onxanw" />
     <bpmn:sequenceFlow id="SequenceFlow_0vmc72q" sourceRef="Task_0bki38q" targetRef="Task_0d08fho" />
     <bpmn:sequenceFlow id="SequenceFlow_0sirxxu" name="Conference&#10;Full" sourceRef="ExclusiveGateway_156f63u" targetRef="EndEvent_00itz63" />
@@ -853,13 +827,39 @@
     <bpmn:sequenceFlow id="SequenceFlow_0vkw6id" sourceRef="Task_04mz7q4" targetRef="IntermediateThrowEvent_13idr6q" />
     <bpmn:sequenceFlow id="SequenceFlow_1ezjlbj" sourceRef="IntermediateThrowEvent_13idr6q" targetRef="ExclusiveGateway_156f63u" />
     <bpmn:sequenceFlow id="SequenceFlow_19bnwat" name="availibility ok" sourceRef="ExclusiveGateway_156f63u" targetRef="Task_0bki38q" />
-    <bpmn:sequenceFlow id="SequenceFlow_0echil0" sourceRef="IntermediateCatchEvent_1isnopj" targetRef="Task_0onxanw" />
     <bpmn:sequenceFlow id="SequenceFlow_1e8fz87" sourceRef="Task_0onxanw" targetRef="ExclusiveGateway_0uwdo2j" />
     <bpmn:sequenceFlow id="SequenceFlow_1raoigz" sourceRef="ExclusiveGateway_0uwdo2j" targetRef="IntermediateThrowEvent_0fqs1ex" />
     <bpmn:sequenceFlow id="SequenceFlow_1bcb0wm" sourceRef="ExclusiveGateway_0uwdo2j" targetRef="IntermediateCatchEvent_03su3es" />
     <bpmn:sequenceFlow id="SequenceFlow_09zgwsm" sourceRef="ExclusiveGateway_0uwdo2j" targetRef="IntermediateCatchEvent_1isnopj" />
     <bpmn:sequenceFlow id="SequenceFlow_04v487h" sourceRef="IntermediateThrowEvent_0fqs1ex" targetRef="EndEvent_1bso9hi" />
     <bpmn:sequenceFlow id="SequenceFlow_1ur99qd" sourceRef="IntermediateCatchEvent_03su3es" targetRef="EndEvent_0mtfoyz" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_03su3es" name="Session Expired">
+      <bpmn:incoming>SequenceFlow_1bcb0wm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ur99qd</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="EndEvent_0mtfoyz">
+      <bpmn:incoming>SequenceFlow_1ur99qd</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0fqs1ex" name="wait payment response">
+      <bpmn:incoming>SequenceFlow_1raoigz</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_04v487h</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="EndEvent_1bso9hi">
+      <bpmn:incoming>SequenceFlow_04v487h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1isnopj" name="failed payment ">
+      <bpmn:incoming>SequenceFlow_09zgwsm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0fhi581</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sendTask id="Task_1s6ova1" name="Retry Payment">
+      <bpmn:incoming>SequenceFlow_0fhi581</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1oc8pbx</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0fhi581" sourceRef="IntermediateCatchEvent_1isnopj" targetRef="Task_1s6ova1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1oc8pbx" sourceRef="Task_1s6ova1" targetRef="ExclusiveGateway_0uwdo2j" />
   </bpmn:process>
   <bpmn:process id="Process_1gqprur" isExecutable="false">
     <bpmn:textAnnotation id="TextAnnotation_1iaxaq1">
@@ -1007,7 +1007,7 @@
       <bpmndi:BPMNShape id="IntermediateCatchEvent_07igv7b_di" bpmnElement="IntermediateThrowEvent_001afks">
         <dc:Bounds x="1201" y="167" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1187" y="130" width="65" height="27" />
+          <dc:Bounds x="1186" y="138" width="65" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_19gxzc1_di" bpmnElement="SequenceFlow_19gxzc1">
@@ -1287,7 +1287,7 @@
         <di:waypoint x="1989" y="4" />
         <di:waypoint x="2051" y="4" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1950.9999999999998" y="12" width="77" height="14" />
+          <dc:Bounds x="1951" y="12" width="77" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SendTask_00x49xf_di" bpmnElement="Task_1jxwfab">
@@ -1630,9 +1630,9 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_1p8hk83_di" bpmnElement="IntermediateThrowEvent_0fqs1ex">
-        <dc:Bounds x="2301" y="3437" width="36" height="36" />
+        <dc:Bounds x="2301" y="3529" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2287" y="3475" width="64" height="27" />
+          <dc:Bounds x="2287" y="3567" width="64" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_1k4ie0s_di" bpmnElement="ExclusiveGateway_1k4ie0s" isMarkerVisible="true">
@@ -1695,7 +1695,7 @@
       <bpmndi:BPMNShape id="IntermediateCatchEvent_0czrhr2_di" bpmnElement="IntermediateThrowEvent_1rwue67">
         <dc:Bounds x="3712" y="49" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3698" y="12" width="64" height="27" />
+          <dc:Bounds x="3698" y="94.5" width="64" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0n7f1hx_di" bpmnElement="SequenceFlow_0n7f1hx">
@@ -1717,9 +1717,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_0wf4706_di" bpmnElement="MessageFlow_0wf4706">
         <di:waypoint x="4381" y="774" />
-        <di:waypoint x="4381" y="335" />
-        <di:waypoint x="3730" y="335" />
-        <di:waypoint x="3730" y="85" />
+        <di:waypoint x="4381" y="-103" />
+        <di:waypoint x="3730" y="-103" />
+        <di:waypoint x="3730" y="49" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1u9kuxl_di" bpmnElement="EndEvent_1u9kuxl">
         <dc:Bounds x="4581" y="796" width="36" height="36" />
@@ -1835,8 +1835,8 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_0cskytq_di" bpmnElement="MessageFlow_0cskytq">
         <di:waypoint x="3058" y="225" />
-        <di:waypoint x="3058" y="330" />
-        <di:waypoint x="3910" y="330" />
+        <di:waypoint x="3058" y="309" />
+        <di:waypoint x="3910" y="309" />
         <di:waypoint x="3910" y="972" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_178av5o_di" bpmnElement="SubProcess_178av5o" isExpanded="true">
@@ -1986,7 +1986,7 @@
         <di:waypoint x="2852" y="184" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1bso9hi_di" bpmnElement="EndEvent_1bso9hi">
-        <dc:Bounds x="2422" y="3437" width="36" height="36" />
+        <dc:Bounds x="2422" y="3529" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Participant_0msrcz5_di" bpmnElement="Participant_0msrcz5">
         <dc:Bounds x="189" y="1983" width="4672" height="156" />
@@ -2117,28 +2117,6 @@
         <di:waypoint x="786" y="57" />
         <di:waypoint x="901" y="57" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_0lmqqdj_di" bpmnElement="IntermediateCatchEvent_0lmqqdj">
-        <dc:Bounds x="576" y="-80" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0fjym09_di" bpmnElement="SequenceFlow_0fjym09">
-        <di:waypoint x="516" y="32" />
-        <di:waypoint x="516" y="-62" />
-        <di:waypoint x="576" y="-62" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_073iob0_di" bpmnElement="SequenceFlow_073iob0">
-        <di:waypoint x="612" y="-62" />
-        <di:waypoint x="686" y="-62" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="EndEvent_00unr0u_di" bpmnElement="EndEvent_1eiewba">
-        <dc:Bounds x="686" y="-80" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0d680tb_di" bpmnElement="TextAnnotation_0d680tb">
-        <dc:Bounds x="722" y="-160" width="100" height="40" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_00203tj_di" bpmnElement="Association_00203tj">
-        <di:waypoint x="716" y="-75" />
-        <di:waypoint x="755" y="-120" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_107t0dw_di" bpmnElement="SubProcess_0xa6040" isExpanded="true">
         <dc:Bounds x="2099" y="1472" width="700" height="284" />
       </bpmndi:BPMNShape>
@@ -2171,11 +2149,11 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0ob4581_di" bpmnElement="TextAnnotation_0ob4581">
-        <dc:Bounds x="1533" y="2742" width="160" height="97" />
+        <dc:Bounds x="1446" y="2742" width="160" height="97" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1sdhkby_di" bpmnElement="Association_1sdhkby">
-        <di:waypoint x="1613" y="2868" />
-        <di:waypoint x="1613" y="2839" />
+        <di:waypoint x="1583" y="2868" />
+        <di:waypoint x="1562" y="2839" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_007v5bv_di" bpmnElement="TextAnnotation_007v5bv">
         <dc:Bounds x="3080" y="871" width="161" height="74" />
@@ -2216,30 +2194,24 @@
         <dc:Bounds x="2168" y="3522" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1raoigz_di" bpmnElement="SequenceFlow_1raoigz">
-        <di:waypoint x="2193" y="3522" />
-        <di:waypoint x="2193" y="3455" />
-        <di:waypoint x="2301" y="3455" />
+        <di:waypoint x="2218" y="3547" />
+        <di:waypoint x="2301" y="3547" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_04v487h_di" bpmnElement="SequenceFlow_04v487h">
-        <di:waypoint x="2337" y="3455" />
-        <di:waypoint x="2422" y="3455" />
+        <di:waypoint x="2337" y="3547" />
+        <di:waypoint x="2422" y="3547" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_1isnopj_di" bpmnElement="IntermediateCatchEvent_1isnopj">
-        <dc:Bounds x="2175" y="3629" width="36" height="36" />
+        <dc:Bounds x="2301" y="3445" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2156" y="3672" width="74" height="14" />
+          <dc:Bounds x="2282" y="3483" width="74" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0echil0_di" bpmnElement="SequenceFlow_0echil0">
-        <di:waypoint x="2175" y="3647" />
-        <di:waypoint x="2035" y="3647" />
-        <di:waypoint x="2035" y="3587" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_1eyfspy_di" bpmnElement="MessageFlow_1eyfspy">
         <di:waypoint x="2524" y="2809" />
-        <di:waypoint x="2524" y="3285" />
-        <di:waypoint x="2319" y="3285" />
-        <di:waypoint x="2319" y="3437" />
+        <di:waypoint x="2524" y="3503" />
+        <di:waypoint x="2319" y="3503" />
+        <di:waypoint x="2319" y="3529" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1wx7zqx_di" bpmnElement="SequenceFlow_1wx7zqx">
         <di:waypoint x="2320" y="1634" />
@@ -2310,35 +2282,23 @@
         <di:waypoint x="2488" y="1881" />
         <di:waypoint x="2488" y="1695" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_13tegy6_di" bpmnElement="TextAnnotation_13tegy6">
-        <dc:Bounds x="2461" y="2990" width="100" height="26" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1xlu1b1_di" bpmnElement="SequenceFlow_1xlu1b1">
         <di:waypoint x="2288" y="2908" />
-        <di:waypoint x="2382" y="2908" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="EndEvent_0j0vqp8_di" bpmnElement="EndEvent_04l9dqg">
-        <dc:Bounds x="2382" y="2890" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2363" y="2868" width="73" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_01vbyqf_di" bpmnElement="Association_01vbyqf">
-        <di:waypoint x="2413" y="2920" />
-        <di:waypoint x="2495" y="2990" />
+        <di:waypoint x="2307" y="2908" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_03su3es_di" bpmnElement="IntermediateCatchEvent_03su3es">
-        <dc:Bounds x="2301" y="3529" width="36" height="36" />
+        <dc:Bounds x="2301" y="3618" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2279" y="3513" width="80" height="14" />
+          <dc:Bounds x="2279" y="3602" width="80" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1bcb0wm_di" bpmnElement="SequenceFlow_1bcb0wm">
-        <di:waypoint x="2218" y="3547" />
-        <di:waypoint x="2301" y="3547" />
+        <di:waypoint x="2193" y="3572" />
+        <di:waypoint x="2193" y="3636" />
+        <di:waypoint x="2301" y="3636" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0mtfoyz_di" bpmnElement="EndEvent_0mtfoyz">
-        <dc:Bounds x="2422" y="3529" width="36" height="36" />
+        <dc:Bounds x="2422" y="3618" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_00orn2g_di" bpmnElement="EndEvent_1q35jrj">
         <dc:Bounds x="2695" y="3147" width="36" height="36" />
@@ -2348,24 +2308,23 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1uw2k46_di" bpmnElement="MessageFlow_1uw2k46">
         <di:waypoint x="2713" y="3183" />
-        <di:waypoint x="2713" y="3632" />
-        <di:waypoint x="2319" y="3632" />
-        <di:waypoint x="2319" y="3565" />
+        <di:waypoint x="2713" y="3690" />
+        <di:waypoint x="2319" y="3690" />
+        <di:waypoint x="2319" y="3654" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1ur99qd_di" bpmnElement="SequenceFlow_1ur99qd">
-        <di:waypoint x="2337" y="3547" />
-        <di:waypoint x="2422" y="3547" />
+        <di:waypoint x="2337" y="3636" />
+        <di:waypoint x="2422" y="3636" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_01rtoir_di" bpmnElement="MessageFlow_01rtoir">
         <di:waypoint x="2400" y="2926" />
-        <di:waypoint x="2400" y="3267" />
-        <di:waypoint x="2250" y="3267" />
-        <di:waypoint x="2250" y="3647" />
-        <di:waypoint x="2211" y="3647" />
+        <di:waypoint x="2400" y="3463" />
+        <di:waypoint x="2337" y="3463" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_09zgwsm_di" bpmnElement="SequenceFlow_09zgwsm">
-        <di:waypoint x="2193" y="3572" />
-        <di:waypoint x="2193" y="3629" />
+        <di:waypoint x="2193" y="3522" />
+        <di:waypoint x="2193" y="3463" />
+        <di:waypoint x="2301" y="3463" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_04z8dka_di" bpmnElement="Task_16bsyeq">
         <dc:Bounds x="2571" y="1538" width="100" height="80" />
@@ -2404,7 +2363,7 @@
         <di:waypoint x="1329" y="185" />
         <di:waypoint x="2449" y="185" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2064" y="167" width="80" height="14" />
+          <dc:Bounds x="1847" y="165" width="80" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0950sck_di" bpmnElement="SequenceFlow_0950sck">
@@ -2412,7 +2371,7 @@
         <di:waypoint x="1304" y="57" />
         <di:waypoint x="1001" y="57" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1228" y="31" width="59" height="27" />
+          <dc:Bounds x="1189" y="24" width="59" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0h2jpx7_di" bpmnElement="SequenceFlow_0h2jpx7">
@@ -2477,6 +2436,51 @@
       <bpmndi:BPMNShape id="TextAnnotation_04ty0i7_di" bpmnElement="TextAnnotation_04ty0i7">
         <dc:Bounds x="845" y="2460" width="99.94939271255062" height="25.641025641025642" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SendTask_1xc1fsq_di" bpmnElement="Task_1s6ova1">
+        <dc:Bounds x="2269" y="3329" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fhi581_di" bpmnElement="SequenceFlow_0fhi581">
+        <di:waypoint x="2319" y="3445" />
+        <di:waypoint x="2319" y="3409" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_14wlph4_di" bpmnElement="EndEvent_04l9dqg">
+        <dc:Bounds x="2382" y="2890" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2363" y="2868" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1cjgzwa_di" bpmnElement="SequenceFlow_1cjgzwa">
+        <di:waypoint x="2357" y="2908" />
+        <di:waypoint x="2382" y="2908" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_0zfyzff_di" bpmnElement="ExclusiveGateway_12ipzpn">
+        <dc:Bounds x="2307" y="2883" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_16l441w_di" bpmnElement="IntermediateThrowEvent_0cqhmhj">
+        <dc:Bounds x="2314" y="2985" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2264" y="2966" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1we54wb_di" bpmnElement="SequenceFlow_1we54wb">
+        <di:waypoint x="2332" y="2933" />
+        <di:waypoint x="2332" y="2985" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1i1cqe5_di" bpmnElement="SequenceFlow_1i1cqe5">
+        <di:waypoint x="2314" y="3003" />
+        <di:waypoint x="2028" y="3003" />
+        <di:waypoint x="2028" y="2948" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_16nghq9_di" bpmnElement="MessageFlow_16nghq9">
+        <di:waypoint x="2332" y="3329" />
+        <di:waypoint x="2332" y="3021" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1oc8pbx_di" bpmnElement="SequenceFlow_1oc8pbx">
+        <di:waypoint x="2269" y="3369" />
+        <di:waypoint x="2109" y="3369" />
+        <di:waypoint x="2109" y="3448" />
+        <di:waypoint x="2175" y="3540" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
