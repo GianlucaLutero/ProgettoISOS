@@ -2,7 +2,7 @@ Correzioni post primo ricevimento.
 Oggetto di correzione: BPMN generale per la doucmentazione.
 
 1) Frecce doppie
-2) risolvere reservation
+2) risolvere reservation --> Risolto
 3) processo loop di gestione delle fatture --> RISOLTO:
    abbiamo tolto il boundary event perchè nel processo loop esiste
    gia la considzione di uscita. 
