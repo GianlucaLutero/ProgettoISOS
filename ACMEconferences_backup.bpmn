@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0bwi6e3" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0bwi6e3" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
   <bpmn:collaboration id="Collaboration_1telxth">
     <bpmn:participant id="Participant_0aoje85" name="Client" processRef="Process_1" />
-    <bpmn:participant id="Participant_01rcm6n" name="ACME Conference" processRef="Process_0y3upxt" />
+    <bpmn:participant id="ACME_Conference" name="ACME Conference" processRef="ACMEConference" />
     <bpmn:participant id="Participant_0d2341e" name="Platform" processRef="Process_0sv2em5" />
     <bpmn:participant id="Participant_0cfcvuo" name="Conference participants" processRef="Process_10jr3wu" />
     <bpmn:participant id="Participant_0f5q0qw" name="GIS" processRef="Process_1gqprur" />
@@ -50,7 +50,7 @@
     <bpmn:messageFlow id="MessageFlow_1wqs3cs" sourceRef="Task_17cgi0r" targetRef="IntermediateThrowEvent_17qu6as" />
     <bpmn:messageFlow id="MessageFlow_16nghq9" sourceRef="Task_1s6ova1" targetRef="IntermediateThrowEvent_0cqhmhj" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1" isExecutable="true">
+  <bpmn:process id="Process_1" isExecutable="false">
     <bpmn:sequenceFlow id="SequenceFlow_0yrnssj" sourceRef="IntermediateThrowEvent_08zcxsr" targetRef="Task_0ssjk5m" />
     <bpmn:sequenceFlow id="SequenceFlow_12ibobw" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateCatchEvent_0mmiwkh" />
     <bpmn:sequenceFlow id="SequenceFlow_03r0ftb" sourceRef="ExclusiveGateway_1sdn8uu" targetRef="IntermediateThrowEvent_08zcxsr" />
@@ -227,7 +227,7 @@
       <bpmn:text>Scelta progettuale: la creazione della piattaforma implica l'inizio di questo processo. Il cliente puo cominciare a richiedere il pagamento di fatture ad ACME solo dopo che la piattaforma sia creata.</bpmn:text>
     </bpmn:textAnnotation>
   </bpmn:process>
-  <bpmn:process id="Process_0y3upxt" isExecutable="false">
+  <bpmn:process id="ACMEConference" name="ACME Conference" isExecutable="true" camunda:versionTag="1">
     <bpmn:sequenceFlow id="SequenceFlow_1p0wot2" sourceRef="Task_12gkros" targetRef="IntermediateThrowEvent_1i3b8ug" />
     <bpmn:sequenceFlow id="SequenceFlow_0yo2a5q" name="balance &#60; 0" sourceRef="ExclusiveGateway_05vcm8t" targetRef="SubProcess_178av5o" />
     <bpmn:sequenceFlow id="SequenceFlow_0nzbaxk" name="balance &#62;= 0" sourceRef="ExclusiveGateway_05vcm8t" targetRef="Task_1kfw6da" />
@@ -902,7 +902,7 @@
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="267" y="39" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Participant_01rcm6n_di" bpmnElement="Participant_01rcm6n">
+      <bpmndi:BPMNShape id="Participant_01rcm6n_di" bpmnElement="ACME_Conference">
         <dc:Bounds x="193" y="489" width="4674" height="1419" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_08h8mbd_di" bpmnElement="SequenceFlow_08h8mbd">
