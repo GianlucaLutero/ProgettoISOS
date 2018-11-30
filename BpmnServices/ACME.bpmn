@@ -383,6 +383,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1sjl676" sourceRef="IntermediateCatchEvent_0gyu44n" targetRef="ExclusiveGateway_1vr13io" />
     <bpmn:sequenceFlow id="SequenceFlow_01mvfjj" name="payment&#10;accepted" sourceRef="ExclusiveGateway_1vr13io" targetRef="EndEvent_02ynm31" />
     <bpmn:sequenceFlow id="SequenceFlow_0jnf83m" name="payment denied" sourceRef="ExclusiveGateway_1vr13io" targetRef="SendTask_11wxti0" />
+    <bpmn:dataStoreReference id="DataStoreReference_01j1c89" name="ACME DB" />
     <bpmn:textAnnotation id="TextAnnotation_07o82js">
       <bpmn:text>Questo possiamo farlo perché ACME ha gia tutte le informazioni che gli necessitano, ovvero il luogo della conferenza</bpmn:text>
     </bpmn:textAnnotation>
@@ -1023,6 +1024,12 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1ydtg1b_di" bpmnElement="TextAnnotation_1ydtg1b">
         <dc:Bounds x="788" y="-238" width="161" height="74" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_01j1c89_di" bpmnElement="DataStoreReference_01j1c89">
+        <dc:Bounds x="-513" y="500" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-513" y="557" width="50" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
