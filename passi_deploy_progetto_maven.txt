@@ -1,0 +1,15 @@
+1) creazione maven project
+
+2) configurazione pom.xml (copiare) dipendenze da doc camunda.
+
+3) creazione folder META-INF sotto resource e dentro META-INF creare
+   il file processes.xml
+4) Creare le classi JavaDelegate e una ServiceProcessApplication  dentro il relativo package 
+   (e.g. org.camunda.bpm.partecint) dentro la directory src.
+  
+5) per generare il file .war cliccare sul pom e selezionare "run as 
+   maven install".
+
+6) Una volta generato il war -> copiarlo e incollarlo dentro la cartella
+   webapps tomcat. Automaticamente viene deployato il progetto
+   su camunda.
