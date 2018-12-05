@@ -725,10 +725,6 @@ Vedi commenti: 
         <bpmn:incoming>SequenceFlow_09er895</bpmn:incoming>
         <bpmn:messageEventDefinition />
       </bpmn:endEvent>
-      <bpmn:task id="Task_068qiz5" name="Notify ACME">
-        <bpmn:incoming>SequenceFlow_02ficse</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_09er895</bpmn:outgoing>
-      </bpmn:task>
       <bpmn:sequenceFlow id="SequenceFlow_09er895" sourceRef="Task_068qiz5" targetRef="EndEvent_192b57g" />
       <bpmn:sequenceFlow id="SequenceFlow_1xlu1b1" name="payment not accepted" sourceRef="ExclusiveGateway_1k4ie0s" targetRef="ExclusiveGateway_12ipzpn" />
       <bpmn:intermediateThrowEvent id="EndEvent_04l9dqg" name="Payment failed">
@@ -748,6 +744,10 @@ Vedi commenti: 
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="SequenceFlow_1we54wb" sourceRef="ExclusiveGateway_12ipzpn" targetRef="IntermediateThrowEvent_0cqhmhj" />
       <bpmn:sequenceFlow id="SequenceFlow_1i1cqe5" sourceRef="IntermediateThrowEvent_0cqhmhj" targetRef="Task_1taqvxp" />
+      <bpmn:sendTask id="Task_068qiz5" name="Notify ACME">
+        <bpmn:incoming>SequenceFlow_02ficse</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_09er895</bpmn:outgoing>
+      </bpmn:sendTask>
       <bpmn:textAnnotation id="TextAnnotation_0ob4581">
         <bpmn:text>Scala temporaneamente il numero di posti disponibili riservandolo al partecipante che ha la sessione aperta</bpmn:text>
       </bpmn:textAnnotation>
@@ -1518,7 +1518,7 @@ Vedi commenti: 
       <bpmndi:BPMNShape id="IntermediateCatchEvent_1ljazsh_di" bpmnElement="IntermediateThrowEvent_0a0ohuq">
         <dc:Bounds x="576" y="2888" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="477" y="2801" width="86" height="27" />
+          <dc:Bounds x="551" y="2860" width="86" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1hj60td_di" bpmnElement="MessageFlow_1hj60td">
@@ -2242,9 +2242,6 @@ Vedi commenti: 
           <dc:Bounds x="2480" y="2750" width="87" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_068qiz5_di" bpmnElement="Task_068qiz5">
-        <dc:Bounds x="2350" y="2751" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_09er895_di" bpmnElement="SequenceFlow_09er895">
         <di:waypoint x="2450" y="2791" />
         <di:waypoint x="2506" y="2791" />
@@ -2697,6 +2694,9 @@ Vedi commenti: 
         <di:waypoint x="918" y="3657" />
         <di:waypoint x="1032" y="3657" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_0ndmhoq_di" bpmnElement="Task_068qiz5">
+        <dc:Bounds x="2350" y="2751" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

@@ -145,9 +145,9 @@
       <bpmn:outgoing>SequenceFlow_1veowi2</bpmn:outgoing>
     </bpmn:sendTask>
   </bpmn:process>
-  <bpmn:message id="Message_0aefafm" name="conference_list" />
-  <bpmn:message id="Message_01odxdx" name="out_registration" />
-  <bpmn:message id="Message_1dxh6c6" name="platform_avaible" />
+  <bpmn:message id="Message_0aefafm" name="waitConferenceList" />
+  <bpmn:message id="Message_01odxdx" name="waitOutRegistrationResponse" />
+  <bpmn:message id="Message_1dxh6c6" name="waitPlatformResponse" />
   <bpmn:message id="Message_1w3irvm" name="payment_failed" />
   <bpmn:message id="Message_0nx11cr" name="payment_success" />
   <bpmn:message id="Message_0tuwlxb" name="session_expired" />

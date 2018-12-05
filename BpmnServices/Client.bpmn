@@ -47,8 +47,12 @@
     <bpmn:sequenceFlow id="SequenceFlow_1x3lhs4" sourceRef="IntermediateCatchEvent_08bfgcv" targetRef="UserTask_1h05a8d" />
     <bpmn:sequenceFlow id="SequenceFlow_0rvbgsq" sourceRef="SendTask_177q0xy" targetRef="InclusiveGateway_1295wum" />
     <bpmn:sequenceFlow id="SequenceFlow_1l3yncf" sourceRef="InclusiveGateway_1295wum" targetRef="IntermediateCatchEvent_06i1vq1" />
-    <bpmn:sequenceFlow id="SequenceFlow_0dykgsb" name="platform created" sourceRef="ExclusiveGateway_1cl2yu3" targetRef="SubProcess_1gkhrb0" />
-    <bpmn:sequenceFlow id="SequenceFlow_160s9yx" name="platform not created" sourceRef="ExclusiveGateway_1cl2yu3" targetRef="UserTask_1h05a8d" />
+    <bpmn:sequenceFlow id="SequenceFlow_0dykgsb" name="platform created" sourceRef="ExclusiveGateway_1cl2yu3" targetRef="SubProcess_1gkhrb0">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${platform_created} == 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_160s9yx" name="platform not created" sourceRef="ExclusiveGateway_1cl2yu3" targetRef="UserTask_1h05a8d">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${platform_created} == 0</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0s7ztfw" sourceRef="IntermediateCatchEvent_06i1vq1" targetRef="ExclusiveGateway_1cl2yu3" />
     <bpmn:sequenceFlow id="SequenceFlow_0dko2hr" name="All inclusive" sourceRef="InclusiveGateway_1295wum" targetRef="SubProcess_09yx4z3" />
     <bpmn:userTask id="UserTask_1h05a8d" name="Insert Conference Details">
@@ -120,11 +124,17 @@
         <bpmn:outgoing>SequenceFlow_1c1mt4f</bpmn:outgoing>
       </bpmn:startEvent>
       <bpmn:sequenceFlow id="SequenceFlow_0bpljpv" sourceRef="IntermediateCatchEvent_07hdjyy" targetRef="UserTask_13wwuoj" />
-      <bpmn:sequenceFlow id="SequenceFlow_1onvlmd" name="More options" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0312edo" />
-      <bpmn:sequenceFlow id="SequenceFlow_0mjiqsx" name="ACME organize" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0bu0fek" />
+      <bpmn:sequenceFlow id="SequenceFlow_1onvlmd" name="More options" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0312edo">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${flag} == 0</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="SequenceFlow_0mjiqsx" name="ACME organize" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0bu0fek">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${flag} == 2</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0ysub5g" sourceRef="SendTask_0rloj08" targetRef="EndEvent_1wxb9ri" />
       <bpmn:sequenceFlow id="SequenceFlow_0y67a7f" sourceRef="SendTask_0bu0fek" targetRef="EndEvent_0z3tniw" />
-      <bpmn:sequenceFlow id="SequenceFlow_1goyhpn" name="User chosen place" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0rloj08" />
+      <bpmn:sequenceFlow id="SequenceFlow_1goyhpn" name="User chosen place" sourceRef="ExclusiveGateway_1inqjqk" targetRef="SendTask_0rloj08">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${flag} == 1</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_1jqbwac" sourceRef="UserTask_13wwuoj" targetRef="ExclusiveGateway_1inqjqk" />
       <bpmn:sequenceFlow id="SequenceFlow_08o02my" sourceRef="SendTask_0312edo" targetRef="IntermediateCatchEvent_07hdjyy" />
       <bpmn:sequenceFlow id="SequenceFlow_1c1mt4f" sourceRef="StartEvent_0o59ohd" targetRef="SendTask_0312edo" />
@@ -185,8 +195,12 @@
       <bpmn:sequenceFlow id="SequenceFlow_0kahs1n" sourceRef="IntermediateCatchEvent_0xgly7r" targetRef="SendTask_1dya8mo" />
       <bpmn:sequenceFlow id="SequenceFlow_1bkje5y" sourceRef="SendTask_1dya8mo" targetRef="IntermediateCatchEvent_067jhrm" />
       <bpmn:sequenceFlow id="SequenceFlow_02t5xc3" sourceRef="IntermediateCatchEvent_067jhrm" targetRef="ExclusiveGateway_04yog8h" />
-      <bpmn:sequenceFlow id="SequenceFlow_0nqvvc2" name="paymend denied" sourceRef="ExclusiveGateway_04yog8h" targetRef="SendTask_1dya8mo" />
-      <bpmn:sequenceFlow id="SequenceFlow_1guisch" name="payment accepted" sourceRef="ExclusiveGateway_04yog8h" targetRef="EndEvent_100k6zq" />
+      <bpmn:sequenceFlow id="SequenceFlow_0nqvvc2" name="paymend denied" sourceRef="ExclusiveGateway_04yog8h" targetRef="SendTask_1dya8mo">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment} == 0</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="SequenceFlow_1guisch" name="payment accepted" sourceRef="ExclusiveGateway_04yog8h" targetRef="EndEvent_100k6zq">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment} == 1</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:association id="Association_0bizy7n" sourceRef="SubProcess_1gkhrb0" targetRef="TextAnnotation_0o7ct2w" />
     <bpmn:textAnnotation id="TextAnnotation_0o7ct2w">
@@ -441,7 +455,7 @@
         <di:waypoint x="-797" y="340" />
         <di:waypoint x="-762" y="340" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="-821" y="320" width="80" height="14" />
+          <dc:Bounds x="-862" y="374" width="80" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0s7ztfw_di" bpmnElement="SequenceFlow_0s7ztfw">
@@ -489,11 +503,11 @@
         <di:waypoint x="-13" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0o7ct2w_di" bpmnElement="TextAnnotation_0o7ct2w">
-        <dc:Bounds x="-253" y="425" width="325" height="85" />
+        <dc:Bounds x="-236" y="399" width="325" height="85" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_0bizy7n_di" bpmnElement="Association_0bizy7n">
-        <di:waypoint x="-286" y="391" />
-        <di:waypoint x="-194" y="425" />
+        <di:waypoint x="-286" y="374" />
+        <di:waypoint x="-201" y="399" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_12cbo56_di" bpmnElement="IntermediateCatchEvent_12cbo56">
         <dc:Bounds x="-1550" y="62" width="36" height="36" />
