@@ -54,13 +54,22 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${platform_created} == 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0s7ztfw" sourceRef="IntermediateCatchEvent_06i1vq1" targetRef="ExclusiveGateway_1cl2yu3" />
-    <bpmn:sequenceFlow id="SequenceFlow_0dko2hr" name="All inclusive" sourceRef="InclusiveGateway_1295wum" targetRef="SubProcess_09yx4z3" />
-    <bpmn:userTask id="UserTask_1h05a8d" name="Insert Conference Details">
+    <bpmn:sequenceFlow id="SequenceFlow_0dko2hr" name="All inclusive" sourceRef="InclusiveGateway_1295wum" targetRef="SubProcess_09yx4z3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${all_inclusive} == true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="UserTask_1h05a8d" name="Insert Conference Details" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="details_conference_name" label="Name" type="string" />
+          <camunda:formField id="details_conference_object" label="Conferenze Object" type="string" />
+          <camunda:formField id="details_conference_desc" label="Description about conference" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1x3lhs4</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_160s9yx</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g9r05u</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sendTask id="SendTask_177q0xy" name="Send Conference Details" camunda:class="org.camunda.bpm.client.CreateConferenceDelegate">
+    <bpmn:sendTask id="SendTask_177q0xy" name="Send Conference Details" camunda:class="org.camunda.bpm.client.ConferenceDetailsDelegate">
       <bpmn:incoming>SequenceFlow_0g9r05u</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0rvbgsq</bpmn:outgoing>
     </bpmn:sendTask>
@@ -207,8 +216,8 @@
       <bpmn:text>Scelta progettuale: la creazione della piattaforma implica l'inizio di questo processo. Il cliente puo cominciare a richiedere il pagamento di fatture ad ACME solo dopo che la piattaforma sia creata.</bpmn:text>
     </bpmn:textAnnotation>
   </bpmn:process>
-  <bpmn:message id="Message_11n9psh" name="positiveAcmeResponse" />
-  <bpmn:message id="Message_05hk1g9" name="negativeAcmeResponse" />
+  <bpmn:message id="Message_11n9psh" name="positiveResponseForConferenceCreation" />
+  <bpmn:message id="Message_05hk1g9" name="negativeResponseForConferenceCreation" />
   <bpmn:message id="Message_0xmqb3n" name="waitPlatformCreation" />
   <bpmn:message id="Message_18nw4ef" name="waitPlaceList" />
   <bpmn:message id="Message_033t4il" />
