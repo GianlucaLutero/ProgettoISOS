@@ -5,22 +5,22 @@
   </bpmn:collaboration>
   <bpmn:process id="Platform" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1ecb2a3" sourceRef="ExclusiveGateway_0z9n6xj" targetRef="SubProcess_1x2927h">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${capacity_conference} == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available} == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0shufro" sourceRef="BoundaryEvent_1xpl3jw" targetRef="EndEvent_1vgeza0" />
     <bpmn:sequenceFlow id="SequenceFlow_0egndnt" sourceRef="IntermediateCatchEvent_1xy75ch" targetRef="ServiceTask_1ezfasz" />
     <bpmn:sequenceFlow id="SequenceFlow_1ssxnsc" sourceRef="ServiceTask_1ezfasz" targetRef="EndEvent_16lnqaa" />
     <bpmn:sequenceFlow id="SequenceFlow_117uv4y" name="still in first day" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="SendTask_1fnel6k">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${availability} == 1</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available} == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_02i6eu8" sourceRef="SendTask_0upduos" targetRef="ExclusiveGateway_0z9n6xj" />
     <bpmn:sequenceFlow id="SequenceFlow_0nu9jie" name="Conference full" sourceRef="ExclusiveGateway_0z9n6xj" targetRef="EndEvent_18fjpi6">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${capacity_conference} == 0</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available} == 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0y69ckx" sourceRef="IntermediateCatchEvent_16fcaid" targetRef="Task_0chatnx" />
     <bpmn:sequenceFlow id="SequenceFlow_18sx182" sourceRef="Task_0chatnx" targetRef="ExclusiveGateway_1nq9ntm" />
     <bpmn:sequenceFlow id="SequenceFlow_0ztt186" name="over 24 h" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="EndEvent_0fgt3v1">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${availability} == 0</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available} == 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0pb3r8x" sourceRef="IntermediateCatchEvent_1vq66k8" targetRef="SendTask_0syk7jy" />
     <bpmn:sequenceFlow id="SequenceFlow_00u5vdl" sourceRef="SendTask_0syk7jy" targetRef="EndEvent_1wqsrgc" />
@@ -51,7 +51,7 @@
       <bpmn:outgoing>SequenceFlow_117uv4y</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0ztt186</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Task_0chatnx" name="Check Registration Availibility" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
+    <bpmn:serviceTask id="Task_0chatnx" name="Check Registration Availibility" camunda:class="org.camunda.bpm.platform.RegistrationAvailableDelegate">
       <bpmn:incoming>SequenceFlow_0y69ckx</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18sx182</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -68,7 +68,7 @@
       <bpmn:outgoing>SequenceFlow_1hk0qz8</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_08mbol2" messageRef="Message_1bxcsad" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:sendTask id="SendTask_0upduos" name="Check availability" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
+    <bpmn:sendTask id="SendTask_0upduos" name="Check availability" camunda:class="org.camunda.bpm.platform.CheckAvailabilityDelegate">
       <bpmn:incoming>SequenceFlow_1hk0qz8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_02i6eu8</bpmn:outgoing>
     </bpmn:sendTask>
@@ -158,7 +158,7 @@
       <bpmn:incoming>SequenceFlow_0shufro</bpmn:incoming>
       <bpmn:messageEventDefinition />
     </bpmn:endEvent>
-    <bpmn:sendTask id="SendTask_1fnel6k" name="Send Conference List" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
+    <bpmn:sendTask id="SendTask_1fnel6k" name="Send Conference List" camunda:class="org.camunda.bpm.platform.SendConferenceListDelegate">
       <bpmn:incoming>SequenceFlow_117uv4y</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0i6agyv</bpmn:outgoing>
     </bpmn:sendTask>
@@ -174,10 +174,10 @@
       <bpmn:text>Viene fatto interamente il controllo della terminazione delle prenotazioni entro il primo giorno dall'inizio della conferenza</bpmn:text>
     </bpmn:textAnnotation>
   </bpmn:process>
-  <bpmn:message id="Message_0jb5c75" name="Message_3uupeq1" />
+  <bpmn:message id="Message_0jb5c75" name="activatedPlatform" />
   <bpmn:message id="Message_10ndzho" name="Message_3vm7gk2" />
-  <bpmn:message id="Message_1bxcsad" name="Message_1qljucr" />
-  <bpmn:message id="Message_1w7uiap" name="Message_3ie2iff" />
+  <bpmn:message id="Message_1bxcsad" name="reservationRequest" />
+  <bpmn:message id="Message_1w7uiap" name="reservationDetails" />
   <bpmn:message id="Message_1o418az" name="Message_0ttv13o" />
   <bpmn:message id="Message_035jzez" name="Message_1qhapto" />
   <bpmn:message id="Message_1pq66hp" name="Message_3ig127b" />
@@ -186,7 +186,7 @@
   <bpmn:message id="Message_1h52j82" name="Message_1hbmvfc" />
   <bpmn:message id="Message_1pj45gn" name="Message_3757cfu" />
   <bpmn:message id="Message_02pnyw7" />
-  <bpmn:message id="Message_0zp7h0m" name="Message_2t3jgl1tt" />
+  <bpmn:message id="Message_0zp7h0m" name="conferencesListRequest:" />
   <bpmn:message id="Message_1eb8kyq" name="timeoutsession" />
   <bpmn:message id="Message_0btcive" />
   <bpmn:message id="Message_1hlak45" name="Message_3l5e0mr" />
