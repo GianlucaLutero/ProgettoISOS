@@ -46,7 +46,9 @@
     <bpmn:sequenceFlow id="SequenceFlow_0g9r05u" sourceRef="UserTask_1h05a8d" targetRef="SendTask_177q0xy" />
     <bpmn:sequenceFlow id="SequenceFlow_1x3lhs4" sourceRef="IntermediateCatchEvent_08bfgcv" targetRef="UserTask_1h05a8d" />
     <bpmn:sequenceFlow id="SequenceFlow_0rvbgsq" sourceRef="SendTask_177q0xy" targetRef="InclusiveGateway_1295wum" />
-    <bpmn:sequenceFlow id="SequenceFlow_1l3yncf" sourceRef="InclusiveGateway_1295wum" targetRef="IntermediateCatchEvent_06i1vq1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1l3yncf" sourceRef="InclusiveGateway_1295wum" targetRef="IntermediateCatchEvent_06i1vq1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0dykgsb" name="platform created" sourceRef="ExclusiveGateway_1cl2yu3" targetRef="SubProcess_1gkhrb0">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${platform_created} == 1</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -54,13 +56,25 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${platform_created} == 0</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0s7ztfw" sourceRef="IntermediateCatchEvent_06i1vq1" targetRef="ExclusiveGateway_1cl2yu3" />
-    <bpmn:sequenceFlow id="SequenceFlow_0dko2hr" name="All inclusive" sourceRef="InclusiveGateway_1295wum" targetRef="SubProcess_09yx4z3" />
-    <bpmn:userTask id="UserTask_1h05a8d" name="Insert Conference Details">
+    <bpmn:sequenceFlow id="SequenceFlow_0dko2hr" name="All inclusive" sourceRef="InclusiveGateway_1295wum" targetRef="SubProcess_09yx4z3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${all_inclusive_flag} == true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="UserTask_1h05a8d" name="Insert Conference Details" camunda:assignee="demo" camunda:candidateUsers="demo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="details_conference_name" label="Name" type="string" />
+          <camunda:formField id="details_conference_object" label="Conferenze Object" type="string" />
+          <camunda:formField id="details_conference_desc" label="Description about conference" type="string" />
+          <camunda:formField id="all_inclusive_flag" label="All Inclusive ?" type="boolean" defaultValue="false" />
+          <camunda:formField id="details_conference_location" label="Location" type="string" />
+          <camunda:formField id="details_conference_date" label="Conference Date" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1x3lhs4</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_160s9yx</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g9r05u</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sendTask id="SendTask_177q0xy" name="Send Conference Details" camunda:class="org.camunda.bpm.client.CreateConferenceDelegate">
+    <bpmn:sendTask id="SendTask_177q0xy" name="Send Conference Details" camunda:class="org.camunda.bpm.client.ConferenceDetailsDelegate">
       <bpmn:incoming>SequenceFlow_0g9r05u</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0rvbgsq</bpmn:outgoing>
     </bpmn:sendTask>
@@ -69,7 +83,7 @@
       <bpmn:outgoing>SequenceFlow_1x3lhs4</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_18mac6j" messageRef="Message_11n9psh" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:inclusiveGateway id="InclusiveGateway_1295wum" default="SequenceFlow_1l3yncf">
+    <bpmn:inclusiveGateway id="InclusiveGateway_1295wum">
       <bpmn:incoming>SequenceFlow_0rvbgsq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1l3yncf</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0dko2hr</bpmn:outgoing>
@@ -86,7 +100,12 @@
     </bpmn:exclusiveGateway>
     <bpmn:subProcess id="SubProcess_09yx4z3" name="All inclusive">
       <bpmn:incoming>SequenceFlow_0dko2hr</bpmn:incoming>
-      <bpmn:userTask id="UserTask_13wwuoj" name="User choice">
+      <bpmn:userTask id="UserTask_13wwuoj" name="User choice" camunda:formKey="embedded:app:forms/user_choise_for_place.html">
+        <bpmn:extensionElements>
+          <camunda:properties>
+            <camunda:property />
+          </camunda:properties>
+        </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_0bpljpv</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1jqbwac</bpmn:outgoing>
       </bpmn:userTask>
@@ -149,11 +168,17 @@
       <bpmn:startEvent id="StartEvent_13nm1vk">
         <bpmn:outgoing>SequenceFlow_14bkysz</bpmn:outgoing>
       </bpmn:startEvent>
-      <bpmn:sendTask id="SendTask_06oy1kt" name="Send conference expenses invoice" camunda:class="org.camunda.bpm.client.CreateConferenceDelegate">
+      <bpmn:sendTask id="SendTask_06oy1kt" name="Send conference expenses invoice" camunda:class="org.camunda.bpm.client.ConferenceExpensesInvoiceDelegate">
         <bpmn:incoming>SequenceFlow_1uyphic</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_15icdch</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:userTask id="UserTask_0ux3oxv" name="Insert conference expenses invoice">
+      <bpmn:userTask id="UserTask_0ux3oxv" name="Insert conference expenses invoice" camunda:assignee="demo" camunda:candidateUsers="demo">
+        <bpmn:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="invoice_name" label="Invoice Name" type="string" />
+            <camunda:formField id="invoice_amout" label="Invoice Amount" type="long" />
+          </camunda:formData>
+        </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_14bkysz</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1uyphic</bpmn:outgoing>
       </bpmn:userTask>
@@ -161,7 +186,7 @@
       <bpmn:sequenceFlow id="SequenceFlow_14bkysz" sourceRef="StartEvent_13nm1vk" targetRef="UserTask_0ux3oxv" />
       <bpmn:sequenceFlow id="SequenceFlow_15icdch" sourceRef="SendTask_06oy1kt" targetRef="EndEvent_1w2a1d0" />
     </bpmn:subProcess>
-    <bpmn:sendTask id="SendTask_164wcpm" name="Calculate total" camunda:class="org.camunda.bpm.client.CreateConferenceDelegate">
+    <bpmn:sendTask id="SendTask_164wcpm" name="Calculate total" camunda:class="org.camunda.bpm.client.CalculateTotalDelegate">
       <bpmn:incoming>SequenceFlow_1axblpn</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0iq59ki</bpmn:outgoing>
     </bpmn:sendTask>
@@ -196,10 +221,10 @@
       <bpmn:sequenceFlow id="SequenceFlow_1bkje5y" sourceRef="SendTask_1dya8mo" targetRef="IntermediateCatchEvent_067jhrm" />
       <bpmn:sequenceFlow id="SequenceFlow_02t5xc3" sourceRef="IntermediateCatchEvent_067jhrm" targetRef="ExclusiveGateway_04yog8h" />
       <bpmn:sequenceFlow id="SequenceFlow_0nqvvc2" name="paymend denied" sourceRef="ExclusiveGateway_04yog8h" targetRef="SendTask_1dya8mo">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment} == 0</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment-payoff == 0} </bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_1guisch" name="payment accepted" sourceRef="ExclusiveGateway_04yog8h" targetRef="EndEvent_100k6zq">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment} == 1</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment-payoff == 1}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:association id="Association_0bizy7n" sourceRef="SubProcess_1gkhrb0" targetRef="TextAnnotation_0o7ct2w" />
@@ -207,13 +232,13 @@
       <bpmn:text>Scelta progettuale: la creazione della piattaforma implica l'inizio di questo processo. Il cliente puo cominciare a richiedere il pagamento di fatture ad ACME solo dopo che la piattaforma sia creata.</bpmn:text>
     </bpmn:textAnnotation>
   </bpmn:process>
-  <bpmn:message id="Message_11n9psh" name="positiveAcmeResponse" />
-  <bpmn:message id="Message_05hk1g9" name="negativeAcmeResponse" />
-  <bpmn:message id="Message_0xmqb3n" name="waitPlatformCreation" />
-  <bpmn:message id="Message_18nw4ef" name="waitPlaceList" />
+  <bpmn:message id="Message_11n9psh" name="positiveResponseForConferenceCreation" />
+  <bpmn:message id="Message_05hk1g9" name="negativeResponseForConferenceCreation" />
+  <bpmn:message id="Message_0xmqb3n" name="responsePlatformCreation" />
+  <bpmn:message id="Message_18nw4ef" name="responsePlaceList" />
   <bpmn:message id="Message_033t4il" />
-  <bpmn:message id="Message_1w0xs4y" name="waitPaymentRequest" />
-  <bpmn:message id="Message_0sy6up4" name="waitPaymentResult" />
+  <bpmn:message id="Message_1w0xs4y" name="paymentOffRequest" />
+  <bpmn:message id="Message_0sy6up4" name="responsePayOffResult" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_104mo33">
       <bpmndi:BPMNShape id="Participant_1mlt9wa_di" bpmnElement="ClientBPMN">
