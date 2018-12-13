@@ -72,10 +72,6 @@
       <bpmn:incoming>SequenceFlow_1hk0qz8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_02i6eu8</bpmn:outgoing>
     </bpmn:sendTask>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference">
-      <bpmn:outgoing>SequenceFlow_0egndnt</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0ym3xcx" messageRef="Message_0jb5c75" />
-    </bpmn:intermediateCatchEvent>
     <bpmn:endEvent id="EndEvent_16lnqaa">
       <bpmn:incoming>SequenceFlow_1ssxnsc</bpmn:incoming>
     </bpmn:endEvent>
@@ -164,6 +160,10 @@
     </bpmn:sendTask>
     <bpmn:sequenceFlow id="SequenceFlow_0i6agyv" sourceRef="SendTask_1fnel6k" targetRef="IntermediateCatchEvent_0yew9k7" />
     <bpmn:sequenceFlow id="SequenceFlow_1hk0qz8" sourceRef="IntermediateCatchEvent_0yew9k7" targetRef="SendTask_0upduos" />
+    <bpmn:startEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference">
+      <bpmn:outgoing>SequenceFlow_0egndnt</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_1daakgy" />
+    </bpmn:startEvent>
     <bpmn:association id="Association_167s3pu" sourceRef="SendTask_0upduos" targetRef="TextAnnotation_0jjl1g1" />
     <bpmn:association id="Association_09y9p6p" sourceRef="SendTask_0upduos" targetRef="TextAnnotation_1thpuyo" />
     <bpmn:association id="Association_0mnguxi" sourceRef="SendTask_1fnel6k" targetRef="TextAnnotation_0jjl1g1" />
@@ -197,6 +197,7 @@
   <bpmn:message id="Message_03m5ik3" name="Message_05uuqk3" />
   <bpmn:message id="Message_1cy84j0" name="Message_0ag5iao" />
   <bpmn:message id="Message_0pjgnc3" name="notifyPartecipantTimeout" />
+  <bpmn:message id="Message_1daakgy" name="activatedPlatform" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_02jue9x">
       <bpmndi:BPMNShape id="Participant_0mct3zd_di" bpmnElement="Participant_0mct3zd">
@@ -237,12 +238,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_16lnqaa_di" bpmnElement="EndEvent_16lnqaa">
         <dc:Bounds x="-1199" y="186" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1xy75ch_di" bpmnElement="IntermediateCatchEvent_1xy75ch">
-        <dc:Bounds x="-1435" y="186" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-1445" y="229" width="57" height="27" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SubProcess_1x2927h_di" bpmnElement="SubProcess_1x2927h" isExpanded="true">
         <dc:Bounds x="36" y="45" width="1084" height="302" />
@@ -463,6 +458,12 @@
         <di:waypoint x="-375" y="206" />
         <di:waypoint x="-292" y="206" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_135hmv4_di" bpmnElement="IntermediateCatchEvent_1xy75ch">
+        <dc:Bounds x="-1435" y="186" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-1445" y="229" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
