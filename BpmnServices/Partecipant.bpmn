@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_06tp2qq" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
   <bpmn:collaboration id="Collaboration_11exo10">
-    <bpmn:participant id="partecipant-service" name="Conference participants" processRef="partecipant" />
+    <bpmn:participant id="partecipant-service" name="Participant" processRef="Partecipant" />
   </bpmn:collaboration>
-  <bpmn:process id="partecipant" isExecutable="true">
+  <bpmn:process id="Partecipant" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1yul5ix" sourceRef="SendTask_07xqr1v" targetRef="ExclusiveGateway_0qcly6v" />
     <bpmn:sequenceFlow id="SequenceFlow_0n3k2v6" sourceRef="StartEvent_185jev5" targetRef="SendTask_07xqr1v" />
     <bpmn:sequenceFlow id="SequenceFlow_0rk2md4" sourceRef="ExclusiveGateway_0qcly6v" targetRef="IntermediateCatchEvent_1vfakrt" />
@@ -15,7 +15,7 @@
     <bpmn:startEvent id="StartEvent_185jev5" name="sign up for conference">
       <bpmn:outgoing>SequenceFlow_0n3k2v6</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sendTask id="SendTask_07xqr1v" name="Get Conferences" camunda:class="org.camunda.bpm.partecipant.ConferenceRequestDelegate">
+    <bpmn:sendTask id="SendTask_07xqr1v" name="Get Conferences" camunda:class="org.camunda.bpm.partecipant.GetConferenceDelegate">
       <bpmn:incoming>SequenceFlow_0n3k2v6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yul5ix</bpmn:outgoing>
     </bpmn:sendTask>
@@ -60,7 +60,7 @@
           </camunda:inputParameter>
         </camunda:inputOutput>
         <camunda:formData>
-          <camunda:formField id="conferenceList" label="Conferenze" type="enum" />
+          <camunda:formField id="conference_List" label="Conferenze" type="enum" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_06icmta</bpmn:incoming>
@@ -82,17 +82,23 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0sa2b50" sourceRef="IntermediateCatchEvent_0nywmoz" targetRef="ExclusiveGateway_1fvj02u" />
     <bpmn:sequenceFlow id="SequenceFlow_0fsszix" name="availibility ok" sourceRef="ExclusiveGateway_1fvj02u" targetRef="UserTask_19zhym8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible} == ok</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == ok}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0rzqj17" name="Conference&#10;Full" sourceRef="ExclusiveGateway_1fvj02u" targetRef="EndEvent_1nhw3rh">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible} == no</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == no}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_18v2i0f" sourceRef="UserTask_19zhym8" targetRef="SendTask_0wq1mzm" />
     <bpmn:sequenceFlow id="SequenceFlow_1ierwfb" sourceRef="SendTask_0wq1mzm" targetRef="EventBasedGateway_15vdqvb" />
     <bpmn:endEvent id="EndEvent_1nhw3rh">
       <bpmn:incoming>SequenceFlow_0rzqj17</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details">
+    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details" camunda:formKey="Insert Reservation Details">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="name_Detail_Reservatiom" label="Reservation Details" type="string" />
+          <camunda:formField id="surname_Detail_Reservatiom" label="Reservation Details" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0fsszix</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18v2i0f</bpmn:outgoing>
     </bpmn:userTask>
@@ -140,12 +146,12 @@
     <bpmn:sequenceFlow id="SequenceFlow_18cvmaj" sourceRef="IntermediateCatchEvent_08ii3fn" targetRef="EndEvent_1ptk5jf" />
     <bpmn:sequenceFlow id="SequenceFlow_1c22vrj" sourceRef="IntermediateCatchEvent_0llty0x" targetRef="SendTask_0mp114g" />
   </bpmn:process>
-  <bpmn:message id="Message_0aefafm" name="waitConferenceList" />
-  <bpmn:message id="Message_01odxdx" name="waitOutRegistrationResponse" />
-  <bpmn:message id="Message_1dxh6c6" name="waitPlatformResponse" />
-  <bpmn:message id="Message_1w3irvm" name="payment_failed" />
-  <bpmn:message id="Message_0nx11cr" name="payment_success" />
-  <bpmn:message id="Message_0tuwlxb" name="session_expired" />
+  <bpmn:message id="Message_0aefafm" name="sendConferenceList" />
+  <bpmn:message id="Message_01odxdx" name="registrationClosed" />
+  <bpmn:message id="Message_1dxh6c6" name="checkAvailibility" />
+  <bpmn:message id="Message_1w3irvm" name="paymentReservationFailed" />
+  <bpmn:message id="Message_0nx11cr" name="paymentReservationSuccess" />
+  <bpmn:message id="Message_0tuwlxb" name="notifyPartecipantTimeout" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_11exo10">
       <bpmndi:BPMNShape id="Participant_1oh479j_di" bpmnElement="partecipant-service">
