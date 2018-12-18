@@ -194,7 +194,7 @@
   <bpmn:message id="Message_1h52j82" name="paymentReservationSuccess" />
   <bpmn:message id="Message_1pj45gn" name="checkEnrollmentPayment" />
   <bpmn:message id="Message_02pnyw7" />
-  <bpmn:message id="Message_0zp7h0m" name="conferencesListRequest:" />
+  <bpmn:message id="Message_0zp7h0m" name="conferencesListRequest" />
   <bpmn:message id="Message_1eb8kyq" name="timeoutsession" />
   <bpmn:message id="Message_0btcive" />
   <bpmn:message id="Message_1hlak45" name="timeoutSession" />
