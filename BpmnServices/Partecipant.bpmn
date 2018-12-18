@@ -15,7 +15,7 @@
     <bpmn:startEvent id="StartEvent_185jev5" name="sign up for conference">
       <bpmn:outgoing>SequenceFlow_0n3k2v6</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sendTask id="SendTask_07xqr1v" name="Get Conferences" camunda:class="org.camunda.bpm.partecipant.GetConferenceDelegate">
+    <bpmn:sendTask id="SendTask_07xqr1v" name="Get Conferences" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.GetConferenceDelegate">
       <bpmn:incoming>SequenceFlow_0n3k2v6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yul5ix</bpmn:outgoing>
     </bpmn:sendTask>
@@ -66,7 +66,7 @@
       <bpmn:incoming>SequenceFlow_06icmta</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17gqp1p</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sendTask id="SendTask_1ugd633" name="Reserve ticket" camunda:class="org.camunda.bpm.partecipant.ConferenceRequestDelegate">
+    <bpmn:sendTask id="SendTask_1ugd633" name="Reserve ticket" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.ConferenceRequestDelegate">
       <bpmn:incoming>SequenceFlow_17gqp1p</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yqf3vf</bpmn:outgoing>
     </bpmn:sendTask>
@@ -102,7 +102,7 @@
       <bpmn:incoming>SequenceFlow_0fsszix</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18v2i0f</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sendTask id="SendTask_0wq1mzm" name="Send Reservation Details &#38; Payment" camunda:class="org.camunda.bpm.partecipant.ReservationDetailsPaymentDelegate">
+    <bpmn:sendTask id="SendTask_0wq1mzm" name="Send Reservation Details &#38; Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.ReservationDetailsPaymentDelegate">
       <bpmn:incoming>SequenceFlow_18v2i0f</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ierwfb</bpmn:outgoing>
     </bpmn:sendTask>
@@ -134,7 +134,7 @@
       <bpmn:outgoing>SequenceFlow_1c22vrj</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_17iyrnz" messageRef="Message_1w3irvm" />
     </bpmn:intermediateCatchEvent>
-    <bpmn:sendTask id="SendTask_0mp114g" name="Retry Payment" camunda:class="org.camunda.bpm.partecipant.RetrayPaymentDelegate">
+    <bpmn:sendTask id="SendTask_0mp114g" name="Retry Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.RetrayPaymentDelegate">
       <bpmn:incoming>SequenceFlow_1c22vrj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1veowi2</bpmn:outgoing>
     </bpmn:sendTask>
