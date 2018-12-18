@@ -11,7 +11,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0egndnt" sourceRef="IntermediateCatchEvent_1xy75ch" targetRef="ServiceTask_1ezfasz" />
     <bpmn:sequenceFlow id="SequenceFlow_1ssxnsc" sourceRef="ServiceTask_1ezfasz" targetRef="EndEvent_16lnqaa" />
     <bpmn:sequenceFlow id="SequenceFlow_117uv4y" name="still in first day" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="SendTask_1fnel6k">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available == 1}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_02i6eu8" sourceRef="SendTask_0upduos" targetRef="ExclusiveGateway_0z9n6xj" />
     <bpmn:sequenceFlow id="SequenceFlow_0nu9jie" name="Conference full" sourceRef="ExclusiveGateway_0z9n6xj" targetRef="EndEvent_18fjpi6">
