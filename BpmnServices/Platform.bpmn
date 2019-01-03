@@ -8,8 +8,6 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == 1}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0shufro" sourceRef="BoundaryEvent_1xpl3jw" targetRef="EndEvent_1vgeza0" />
-    <bpmn:sequenceFlow id="SequenceFlow_0egndnt" sourceRef="IntermediateCatchEvent_1xy75ch" targetRef="ServiceTask_1ezfasz" />
-    <bpmn:sequenceFlow id="SequenceFlow_1ssxnsc" sourceRef="ServiceTask_1ezfasz" targetRef="EndEvent_16lnqaa" />
     <bpmn:sequenceFlow id="SequenceFlow_117uv4y" name="still in first day" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="SendTask_1fnel6k">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -41,10 +39,6 @@
     <bpmn:startEvent id="StartEvent_0r07e06">
       <bpmn:outgoing>SequenceFlow_1lt20il</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference">
-      <bpmn:outgoing>SequenceFlow_0egndnt</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_1daakgy" />
-    </bpmn:intermediateCatchEvent>
     <bpmn:sendTask id="SendTask_1fnel6k" name="Send Conference List" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.SendConferenceListDelegate">
       <bpmn:incoming>SequenceFlow_117uv4y</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0i6agyv</bpmn:outgoing>
@@ -124,13 +118,6 @@
       </bpmn:textAnnotation>
       <bpmn:association id="Association_0vzb9py" sourceRef="SendTask_030gc85" targetRef="TextAnnotation_02smqjr" />
     </bpmn:subProcess>
-    <bpmn:serviceTask id="ServiceTask_1ezfasz" name="Create platform" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
-      <bpmn:incoming>SequenceFlow_0egndnt</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ssxnsc</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:endEvent id="EndEvent_16lnqaa">
-      <bpmn:incoming>SequenceFlow_1ssxnsc</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:sendTask id="SendTask_0upduos" name="Check availability" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CheckAvailabilityDelegate">
       <bpmn:incoming>SequenceFlow_1hk0qz8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_02i6eu8</bpmn:outgoing>
@@ -172,6 +159,21 @@
     <bpmn:endEvent id="EndEvent_1wqsrgc">
       <bpmn:incoming>SequenceFlow_00u5vdl</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:subProcess id="SubProcess_18kq6le" triggeredByEvent="true">
+      <bpmn:serviceTask id="ServiceTask_1ezfasz" name="Create platform" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
+        <bpmn:incoming>SequenceFlow_10ocp25</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0ipb0ie</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="EndEvent_16lnqaa">
+        <bpmn:incoming>SequenceFlow_0ipb0ie</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="SequenceFlow_10ocp25" sourceRef="IntermediateCatchEvent_1xy75ch" targetRef="ServiceTask_1ezfasz" />
+      <bpmn:sequenceFlow id="SequenceFlow_0ipb0ie" sourceRef="ServiceTask_1ezfasz" targetRef="EndEvent_16lnqaa" />
+      <bpmn:startEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference" isInterrupting="false">
+        <bpmn:outgoing>SequenceFlow_10ocp25</bpmn:outgoing>
+        <bpmn:messageEventDefinition messageRef="Message_1s89ssc" />
+      </bpmn:startEvent>
+    </bpmn:subProcess>
     <bpmn:association id="Association_0mnguxi" sourceRef="SendTask_1fnel6k" targetRef="TextAnnotation_0jjl1g1" />
     <bpmn:association id="Association_09y9p6p" sourceRef="SendTask_0upduos" targetRef="TextAnnotation_1thpuyo" />
     <bpmn:association id="Association_167s3pu" sourceRef="SendTask_0upduos" targetRef="TextAnnotation_0jjl1g1" />
@@ -206,10 +208,11 @@
   <bpmn:message id="Message_1cy84j0" name="Message_0ag5iao" />
   <bpmn:message id="Message_0pjgnc3" name="notifyPartecipantTimeout" />
   <bpmn:message id="Message_1daakgy" name="activatedPlatform" />
+  <bpmn:message id="Message_1s89ssc" name="activatedPlatform" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_02jue9x">
       <bpmndi:BPMNShape id="Participant_0mct3zd_di" bpmnElement="Participant_0mct3zd">
-        <dc:Bounds x="-1568" y="-27" width="3179" height="472" />
+        <dc:Bounds x="-1756" y="-27" width="3367" height="472" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1fnel6k_di" bpmnElement="SendTask_1fnel6k">
         <dc:Bounds x="-600" y="166" width="100" height="80" />
@@ -242,10 +245,10 @@
         <dc:Bounds x="-102" y="76" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1ezfasz_di" bpmnElement="ServiceTask_1ezfasz">
-        <dc:Bounds x="-1349" y="164" width="100" height="80" />
+        <dc:Bounds x="-1456" y="168" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_16lnqaa_di" bpmnElement="EndEvent_16lnqaa">
-        <dc:Bounds x="-1199" y="186" width="36" height="36" />
+        <dc:Bounds x="-1281" y="190" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SubProcess_1x2927h_di" bpmnElement="SubProcess_1x2927h" isExpanded="true">
         <dc:Bounds x="36" y="45" width="1084" height="302" />
@@ -256,14 +259,6 @@
       <bpmndi:BPMNShape id="TextAnnotation_0jjl1g1_di" bpmnElement="TextAnnotation_0jjl1g1">
         <dc:Bounds x="-382" y="296" width="259" height="79" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1ssxnsc_di" bpmnElement="SequenceFlow_1ssxnsc">
-        <di:waypoint x="-1249" y="204" />
-        <di:waypoint x="-1199" y="204" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0egndnt_di" bpmnElement="SequenceFlow_0egndnt">
-        <di:waypoint x="-1399" y="204" />
-        <di:waypoint x="-1349" y="204" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0nu9jie_di" bpmnElement="SequenceFlow_0nu9jie">
         <di:waypoint x="-84" y="181" />
         <di:waypoint x="-84" y="112" />
@@ -460,12 +455,6 @@
         <di:waypoint x="-375" y="206" />
         <di:waypoint x="-292" y="206" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1gajno0_di" bpmnElement="IntermediateCatchEvent_1xy75ch">
-        <dc:Bounds x="-1435" y="186" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-1445" y="229" width="57" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_0r07e06_di" bpmnElement="StartEvent_0r07e06">
         <dc:Bounds x="-1104" y="188" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -485,6 +474,23 @@
         <di:waypoint x="-991" y="298" />
         <di:waypoint x="-991" y="224" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_10ocp25_di" bpmnElement="SequenceFlow_10ocp25">
+        <di:waypoint x="-1544" y="211" />
+        <di:waypoint x="-1456" y="209" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ipb0ie_di" bpmnElement="SequenceFlow_0ipb0ie">
+        <di:waypoint x="-1356" y="208" />
+        <di:waypoint x="-1281" y="208" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SubProcess_1esau8l_di" bpmnElement="SubProcess_18kq6le" isExpanded="true">
+        <dc:Bounds x="-1621" y="106" width="438" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1prbaom_di" bpmnElement="IntermediateCatchEvent_1xy75ch">
+        <dc:Bounds x="-1580" y="193" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-1590" y="236" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
