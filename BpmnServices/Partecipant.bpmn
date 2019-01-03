@@ -50,7 +50,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_17gqp1p" sourceRef="UserTask_1dini8v" targetRef="SendTask_1ugd633" />
     <bpmn:sequenceFlow id="SequenceFlow_1yqf3vf" sourceRef="SendTask_1ugd633" targetRef="IntermediateCatchEvent_0nywmoz" />
-    <bpmn:userTask id="UserTask_1dini8v" name="Select&#10;Conference" camunda:formKey="Select conference">
+    <bpmn:userTask id="UserTask_1dini8v" name="Select&#10;Conference" camunda:formKey="embedded:app:forms/user-select-conference.html" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="conferences">
@@ -59,14 +59,11 @@
             </camunda:list>
           </camunda:inputParameter>
         </camunda:inputOutput>
-        <camunda:formData>
-          <camunda:formField id="conference_List" label="Conferenze" type="enum" />
-        </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_06icmta</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17gqp1p</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sendTask id="SendTask_1ugd633" name="Reserve ticket" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.ConferenceRequestDelegate">
+    <bpmn:sendTask id="SendTask_1ugd633" name="Reserve ticket" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.partecipant.ReserveTicketDelegate">
       <bpmn:incoming>SequenceFlow_17gqp1p</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yqf3vf</bpmn:outgoing>
     </bpmn:sendTask>
@@ -82,17 +79,17 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0sa2b50" sourceRef="IntermediateCatchEvent_0nywmoz" targetRef="ExclusiveGateway_1fvj02u" />
     <bpmn:sequenceFlow id="SequenceFlow_0fsszix" name="availibility ok" sourceRef="ExclusiveGateway_1fvj02u" targetRef="UserTask_19zhym8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == ok}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0rzqj17" name="Conference&#10;Full" sourceRef="ExclusiveGateway_1fvj02u" targetRef="EndEvent_1nhw3rh">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == no}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_18v2i0f" sourceRef="UserTask_19zhym8" targetRef="SendTask_0wq1mzm" />
     <bpmn:sequenceFlow id="SequenceFlow_1ierwfb" sourceRef="SendTask_0wq1mzm" targetRef="EventBasedGateway_15vdqvb" />
     <bpmn:endEvent id="EndEvent_1nhw3rh">
       <bpmn:incoming>SequenceFlow_0rzqj17</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details" camunda:formKey="Insert Reservation Details">
+    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details" camunda:formKey="embedded:app:forms/user-insert-reservation-details.html" camunda:candidateUsers="demo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="name_Detail_Reservatiom" label="Reservation Details" type="string" />
