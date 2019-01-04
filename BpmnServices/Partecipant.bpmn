@@ -79,10 +79,10 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0sa2b50" sourceRef="IntermediateCatchEvent_0nywmoz" targetRef="ExclusiveGateway_1fvj02u" />
     <bpmn:sequenceFlow id="SequenceFlow_0fsszix" name="availibility ok" sourceRef="ExclusiveGateway_1fvj02u" targetRef="UserTask_19zhym8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available  == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0rzqj17" name="Conference&#10;Full" sourceRef="ExclusiveGateway_1fvj02u" targetRef="EndEvent_1nhw3rh">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${avaible == false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_18v2i0f" sourceRef="UserTask_19zhym8" targetRef="SendTask_0wq1mzm" />
     <bpmn:sequenceFlow id="SequenceFlow_1ierwfb" sourceRef="SendTask_0wq1mzm" targetRef="EventBasedGateway_15vdqvb" />
