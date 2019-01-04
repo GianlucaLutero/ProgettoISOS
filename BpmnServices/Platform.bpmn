@@ -5,7 +5,7 @@
   </bpmn:collaboration>
   <bpmn:process id="Platform" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1ecb2a3" sourceRef="ExclusiveGateway_0z9n6xj" targetRef="SubProcess_1x2927h">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == 1}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0shufro" sourceRef="BoundaryEvent_1xpl3jw" targetRef="EndEvent_1vgeza0" />
     <bpmn:sequenceFlow id="SequenceFlow_117uv4y" name="still in first day" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="SendTask_1fnel6k">
@@ -13,7 +13,7 @@
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_02i6eu8" sourceRef="SendTask_0upduos" targetRef="ExclusiveGateway_0z9n6xj" />
     <bpmn:sequenceFlow id="SequenceFlow_0nu9jie" name="Conference full" sourceRef="ExclusiveGateway_0z9n6xj" targetRef="EndEvent_18fjpi6">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == 0}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0y69ckx" sourceRef="IntermediateCatchEvent_16fcaid" targetRef="Task_0chatnx" />
     <bpmn:sequenceFlow id="SequenceFlow_18sx182" sourceRef="Task_0chatnx" targetRef="ExclusiveGateway_1nq9ntm" />
