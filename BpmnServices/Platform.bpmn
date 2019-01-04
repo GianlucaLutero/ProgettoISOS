@@ -160,7 +160,7 @@
       <bpmn:incoming>SequenceFlow_00u5vdl</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:subProcess id="SubProcess_18kq6le" triggeredByEvent="true">
-      <bpmn:serviceTask id="ServiceTask_1ezfasz" name="Create platform" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
+      <bpmn:serviceTask id="ServiceTask_1ezfasz" name="Create platform" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
         <bpmn:incoming>SequenceFlow_10ocp25</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0ipb0ie</bpmn:outgoing>
       </bpmn:serviceTask>
