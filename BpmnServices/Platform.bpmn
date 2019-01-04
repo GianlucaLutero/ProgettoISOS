@@ -169,7 +169,7 @@
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="SequenceFlow_10ocp25" sourceRef="IntermediateCatchEvent_1xy75ch" targetRef="ServiceTask_1ezfasz" />
       <bpmn:sequenceFlow id="SequenceFlow_0ipb0ie" sourceRef="ServiceTask_1ezfasz" targetRef="EndEvent_16lnqaa" />
-      <bpmn:startEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference" isInterrupting="false">
+      <bpmn:startEvent id="IntermediateCatchEvent_1xy75ch" name="Create Conference" camunda:asyncBefore="true" camunda:asyncAfter="true" isInterrupting="false">
         <bpmn:outgoing>SequenceFlow_10ocp25</bpmn:outgoing>
         <bpmn:messageEventDefinition messageRef="Message_1s89ssc" />
       </bpmn:startEvent>
