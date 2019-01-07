@@ -17,12 +17,17 @@ type TransactionData: void {
 
 type BankUser: void {
 	.name: string
-	.password: string 
+	.password: string
 	.credit: int
 	.tListLength : int
 	.transactionList : TransactionData
 }
 
+type AccountRequest: void{
+	.user: string
+}
+
 interface BankInterface {
 	RequestResponse: payment(BankRequest)(BankResponse)
+    RequestResponse: checkAccount(AccountRequest)(BankResponse)
 }

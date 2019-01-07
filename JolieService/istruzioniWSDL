@@ -1,0 +1,1 @@
+jolie2wsdl --namespace soseng --portName BankService --portAddr http://localhost:8000 --o BankService.wsdl bankService.ol
