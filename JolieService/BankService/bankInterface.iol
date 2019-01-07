@@ -1,7 +1,6 @@
 type BankRequest: void {
 	.user: string
 	.password: string
-	.authKey: string
 	.amount: int
 	.receiver: string
 }
@@ -18,6 +17,7 @@ type TransactionData: void {
 type BankUser: void {
 	.name: string
 	.password: string
+	.authKey: string
 	.credit: int
 	.tListLength : int
 	.transactionList : TransactionData
