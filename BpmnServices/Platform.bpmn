@@ -60,15 +60,10 @@
       <bpmn:sendTask id="SendTask_15iffh0" name="Execute Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.ExecutePaymentDelegate">
         <bpmn:incoming>SequenceFlow_1l19vqn</bpmn:incoming>
         <bpmn:incoming>SequenceFlow_0725nk0</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_02pepvm</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_0vuecad</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_15xpk3h" name="wait bank response">
-        <bpmn:incoming>SequenceFlow_02pepvm</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_11bvdtl</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0mcx5am" messageRef="Message_035jzez" />
-      </bpmn:intermediateCatchEvent>
       <bpmn:exclusiveGateway id="ExclusiveGateway_1iqzhaf">
-        <bpmn:incoming>SequenceFlow_11bvdtl</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_0taijpk</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1i63kkp</bpmn:outgoing>
         <bpmn:outgoing>SequenceFlow_0gmwwar</bpmn:outgoing>
       </bpmn:exclusiveGateway>
@@ -101,11 +96,9 @@
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == 0}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0o66rq9" sourceRef="Task_1m49sgi" targetRef="EndEvent_1pbgaio" />
-      <bpmn:sequenceFlow id="SequenceFlow_11bvdtl" sourceRef="IntermediateCatchEvent_15xpk3h" targetRef="ExclusiveGateway_1iqzhaf" />
       <bpmn:sequenceFlow id="SequenceFlow_0gmwwar" name="payment accepted" sourceRef="ExclusiveGateway_1iqzhaf" targetRef="Task_1m49sgi">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == 1}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
-      <bpmn:sequenceFlow id="SequenceFlow_02pepvm" sourceRef="SendTask_15iffh0" targetRef="IntermediateCatchEvent_15xpk3h" />
       <bpmn:sequenceFlow id="SequenceFlow_0725nk0" sourceRef="IntermediateCatchEvent_07979u8" targetRef="SendTask_15iffh0" />
       <bpmn:sequenceFlow id="SequenceFlow_04y6k3i" sourceRef="SendTask_030gc85" targetRef="IntermediateCatchEvent_07979u8" />
       <bpmn:sequenceFlow id="SequenceFlow_0jlzg3g" sourceRef="StartEvent_1jzgnp7" targetRef="SendTask_030gc85" />
@@ -113,6 +106,12 @@
         <bpmn:incoming>SequenceFlow_0gmwwar</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0o66rq9</bpmn:outgoing>
       </bpmn:sendTask>
+      <bpmn:serviceTask id="Task_0kvmbkc" name="Check Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CheckAvailabilityDelegate">
+        <bpmn:incoming>SequenceFlow_0vuecad</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0taijpk</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="SequenceFlow_0vuecad" sourceRef="SendTask_15iffh0" targetRef="Task_0kvmbkc" />
+      <bpmn:sequenceFlow id="SequenceFlow_0taijpk" sourceRef="Task_0kvmbkc" targetRef="ExclusiveGateway_1iqzhaf" />
       <bpmn:textAnnotation id="TextAnnotation_02smqjr">
         <bpmn:text>Scala temporaneamente il numero di posti disponibili riservandolo al partecipante che ha la sessione aperta</bpmn:text>
       </bpmn:textAnnotation>
@@ -311,12 +310,6 @@
       <bpmndi:BPMNShape id="SendTask_15iffh0_di" bpmnElement="SendTask_15iffh0">
         <dc:Bounds x="541" y="166" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_15xpk3h_di" bpmnElement="IntermediateCatchEvent_15xpk3h">
-        <dc:Bounds x="703" y="188" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="698" y="231" width="46" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_1iqzhaf_di" bpmnElement="ExclusiveGateway_1iqzhaf" isMarkerVisible="true">
         <dc:Bounds x="801" y="181" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -368,10 +361,6 @@
         <di:waypoint x="997" y="105" />
         <di:waypoint x="1047" y="105" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_11bvdtl_di" bpmnElement="SequenceFlow_11bvdtl">
-        <di:waypoint x="739" y="206" />
-        <di:waypoint x="801" y="206" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0gmwwar_di" bpmnElement="SequenceFlow_0gmwwar">
         <di:waypoint x="826" y="181" />
         <di:waypoint x="826" y="105" />
@@ -379,10 +368,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="781" y="83" width="90" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_02pepvm_di" bpmnElement="SequenceFlow_02pepvm">
-        <di:waypoint x="641" y="206" />
-        <di:waypoint x="703" y="206" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0725nk0_di" bpmnElement="SequenceFlow_0725nk0">
         <di:waypoint x="432" y="206" />
@@ -491,6 +476,17 @@
           <dc:Bounds x="-1590" y="236" width="57" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0gvkf4k_di" bpmnElement="Task_0kvmbkc">
+        <dc:Bounds x="675" y="166" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0vuecad_di" bpmnElement="SequenceFlow_0vuecad">
+        <di:waypoint x="641" y="206" />
+        <di:waypoint x="675" y="206" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0taijpk_di" bpmnElement="SequenceFlow_0taijpk">
+        <di:waypoint x="775" y="206" />
+        <di:waypoint x="801" y="206" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
