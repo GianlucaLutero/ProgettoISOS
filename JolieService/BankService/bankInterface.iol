@@ -9,10 +9,17 @@ type BankResponse: void {
 	.response: string
 }
 
+type TransactionData: void {
+	.from : string
+	.amount : int
+}
+
 type BankUser: void {
 	.name: string
 	.password: string 
 	.credit: int
+	.tListLength : int
+	.transactionList : TransactionData
 }
 
 interface BankInterface {
