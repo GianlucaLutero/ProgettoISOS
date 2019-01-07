@@ -1,6 +1,7 @@
 type BankRequest: void {
 	.user: string
 	.password: string
+	.authKey: string
 	.amount: int
 	.receiver: string
 }

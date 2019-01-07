@@ -40,6 +40,8 @@ main {
 
 	while(true){
 
+		//Authentication done with authKey
+
 		//payment
 		[ payment( request )( response ){
 			leng = #global.users;
@@ -62,6 +64,30 @@ main {
 			};
 
 
+		} ]
+
+		// check account
+		[ checkAccount( request )( response ){
+
+			for( i = 0, i < leng, i++){
+				// println@Console("user name:" + global.users[i].name)();
+				if( request.user == global.users[i].name ) {
+					if( request.password == global.users[i].password ) {
+						response.response = "{ status: OK , transactions : [";
+
+						// Aggiungere tutte le transazioni con il for e in json
+						response.response =	response.response + global.users[i].transactionList;
+
+					 	response.response =	response.response + "]}";
+						i = leng
+					} else {
+						response.response = "{error : wrong_authentication}"
+					}
+				}else {
+					response.response = "{error : wrong_authentication}"
+				}
+			};		
+	
 		} ]
 
 	}
