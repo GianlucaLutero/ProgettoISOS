@@ -8,9 +8,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0n3k2v6" sourceRef="StartEvent_185jev5" targetRef="SendTask_07xqr1v" />
     <bpmn:sequenceFlow id="SequenceFlow_0rk2md4" sourceRef="ExclusiveGateway_0qcly6v" targetRef="IntermediateCatchEvent_1vfakrt" />
     <bpmn:sequenceFlow id="SequenceFlow_06icmta" sourceRef="IntermediateCatchEvent_1vfakrt" targetRef="UserTask_1dini8v" />
-    <bpmn:sequenceFlow id="SequenceFlow_1kkgyhq" sourceRef="ExclusiveGateway_0qcly6v" targetRef="IntermediateThrowEvent_0i02nvv" />
     <bpmn:sequenceFlow id="SequenceFlow_1w3ifz6" sourceRef="ExclusiveGateway_0qcly6v" targetRef="IntermediateThrowEvent_0vjg6nr" />
-    <bpmn:sequenceFlow id="SequenceFlow_1crywdf" sourceRef="IntermediateThrowEvent_0i02nvv" targetRef="EndEvent_1j6c7lo" />
     <bpmn:sequenceFlow id="SequenceFlow_12s4rqn" sourceRef="IntermediateThrowEvent_0vjg6nr" targetRef="EndEvent_1egr5j1" />
     <bpmn:startEvent id="StartEvent_185jev5" name="sign up for conference">
       <bpmn:outgoing>SequenceFlow_0n3k2v6</bpmn:outgoing>
@@ -22,14 +20,8 @@
     <bpmn:eventBasedGateway id="ExclusiveGateway_0qcly6v">
       <bpmn:incoming>SequenceFlow_1yul5ix</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0rk2md4</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_1kkgyhq</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_1w3ifz6</bpmn:outgoing>
     </bpmn:eventBasedGateway>
-    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_0i02nvv" name="wait out of registration">
-      <bpmn:incoming>SequenceFlow_1kkgyhq</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1crywdf</bpmn:outgoing>
-      <bpmn:messageEventDefinition messageRef="Message_01odxdx" />
-    </bpmn:intermediateCatchEvent>
     <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1vfakrt" name="Wait Conferences List">
       <bpmn:incoming>SequenceFlow_0rk2md4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_06icmta</bpmn:outgoing>
@@ -44,9 +36,6 @@
     </bpmn:intermediateCatchEvent>
     <bpmn:endEvent id="EndEvent_1egr5j1">
       <bpmn:incoming>SequenceFlow_12s4rqn</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:endEvent id="EndEvent_1j6c7lo">
-      <bpmn:incoming>SequenceFlow_1crywdf</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_17gqp1p" sourceRef="UserTask_1dini8v" targetRef="SendTask_1ugd633" />
     <bpmn:sequenceFlow id="SequenceFlow_1yqf3vf" sourceRef="SendTask_1ugd633" targetRef="IntermediateCatchEvent_0nywmoz" />
@@ -311,34 +300,16 @@
         <di:waypoint x="-1211" y="291" />
         <di:waypoint x="-1165" y="291" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1g3rwd2_di" bpmnElement="IntermediateThrowEvent_0i02nvv">
-        <dc:Bounds x="-1165" y="149" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="-1174" y="192" width="55" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_1tnkp0o_di" bpmnElement="IntermediateThrowEvent_0vjg6nr">
         <dc:Bounds x="-1165" y="373" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="-1187" y="416" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1kkgyhq_di" bpmnElement="SequenceFlow_1kkgyhq">
-        <di:waypoint x="-1236" y="266" />
-        <di:waypoint x="-1236" y="167" />
-        <di:waypoint x="-1165" y="167" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1w3ifz6_di" bpmnElement="SequenceFlow_1w3ifz6">
         <di:waypoint x="-1236" y="316" />
         <di:waypoint x="-1236" y="391" />
         <di:waypoint x="-1165" y="391" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="EndEvent_1j6c7lo_di" bpmnElement="EndEvent_1j6c7lo">
-        <dc:Bounds x="-1063" y="149" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1crywdf_di" bpmnElement="SequenceFlow_1crywdf">
-        <di:waypoint x="-1129" y="167" />
-        <di:waypoint x="-1063" y="167" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1egr5j1_di" bpmnElement="EndEvent_1egr5j1">
         <dc:Bounds x="-1063" y="373" width="36" height="36" />
