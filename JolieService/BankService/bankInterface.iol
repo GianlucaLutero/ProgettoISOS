@@ -1,6 +1,5 @@
 type BankRequest: void {
-	.user: string
-	.password: string
+	.authKey: string
 	.amount: int
 	.receiver: string
 }
@@ -12,6 +11,7 @@ type BankResponse: void {
 type TransactionData: void {
 	.from : string
 	.amount : int
+	.time : string
 }
 
 type BankUser: void {
