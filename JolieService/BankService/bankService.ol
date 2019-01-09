@@ -7,8 +7,10 @@ include "bankInterface.iol"
 inputPort BankService {
 	Location: "socket://localhost:8000"
 	Protocol: soap{
-		.wsdl = "./BankService.wsdl";
-		.wsdl.port = "BankServicePort"
+	//	.wsdl = "./BankService.wsdl";
+	//	.wsdl.port = "BankServicePort";
+		.namespace = "org.camunda.bpm.ExternalService.xsd";
+		.dropRootValue = true
 	}
 	Interfaces: BankInterface
 }
