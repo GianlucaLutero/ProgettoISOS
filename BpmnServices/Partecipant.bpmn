@@ -78,7 +78,7 @@
     <bpmn:endEvent id="EndEvent_1nhw3rh">
       <bpmn:incoming>SequenceFlow_0rzqj17</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details" camunda:candidateUsers="demo">
+    <bpmn:userTask id="UserTask_19zhym8" name="Insert Reservation Details" camunda:assignee="demo" camunda:candidateUsers="demo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="name_Detail_Reservatiom" label="Nome" type="string" />

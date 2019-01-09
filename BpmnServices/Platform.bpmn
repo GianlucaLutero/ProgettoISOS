@@ -106,7 +106,7 @@
         <bpmn:incoming>SequenceFlow_0gmwwar</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0o66rq9</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:serviceTask id="Task_0kvmbkc" name="Check Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CheckAvailabilityDelegate">
+      <bpmn:serviceTask id="Task_0kvmbkc" name="Check Payment" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CheckPaymentDelegate">
         <bpmn:incoming>SequenceFlow_0vuecad</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0taijpk</bpmn:outgoing>
       </bpmn:serviceTask>
