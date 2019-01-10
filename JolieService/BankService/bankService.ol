@@ -67,7 +67,7 @@ main {
 									t.from = global.users[i].name;
 									t.amount = request.amount;
 									getCurrentDateTime@Time()(t.time);
-									println@Console(t.time)();
+									println@Console("Payment done for "+t.from+" in date "+t.time+" of " + t.amount)();
 									global.users[j].transactionList[#global.users[j].transactionList] << t;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].from = request.receiver;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].amount = request.amount;
