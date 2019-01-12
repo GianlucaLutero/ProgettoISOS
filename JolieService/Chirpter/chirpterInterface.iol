@@ -4,10 +4,22 @@ type ChirpterRequest: void{
   .msg: string
 }
 
-type ChirpterResponse: void{
+type ChirpterStreamRequest: void{
+  .authKey: string
+  .chirpID: string
+  .msg: string
+}
+
+type ChirpterPublishResponse: void{
   .response: string
 }
 
+type ChirpterListResponse: void{
+  .response: string
+}
+type ChirpterCreateResponse: void{
+  .response: string
+}
 type ChirpterListRequest: void{
   .authKey:string
 }
@@ -30,7 +42,7 @@ type ChirpterUser: void{
 }
 
 interface ChirpterInterface{
-    RequestResponse: publish(ChirpterRequest)(ChirpterResponse)
-	RequestResponse: createChirpStream(ChirpterRequest)(ChirpterResponse)
-    RequestResponse: getChirpList(ChirpterListRequest)(ChirpterResponse)
+    RequestResponse: publish(ChirpterRequest)(ChirpterPublishResponse)
+	  RequestResponse: createChirpStream(ChirpterStreamRequest)(ChirpterCreateResponse)
+    RequestResponse: getChirpList(ChirpterListRequest)(ChirpterListResponse)
 }

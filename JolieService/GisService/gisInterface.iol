@@ -1,12 +1,29 @@
-type GisRequest: void{
-  .place:string
-  .placeList:string
+
+type Place: void{
+    .name: string
+    .location: string
+    .x: double
+    .y: double
 }
 
-type GisResponse: void{
+type GisPlaceRequest: void{
+  .name: string
+}
+
+type GisNearResponse: void{
+  .location:Place
+}
+
+type GisNearRequest: void{
+  .place:Place
+  .placeList:Place
+}
+
+type GisPlaceResponse: void{
   .location:string
 }
 
 interface GisInterface {
-    RequestResponse: getPlace(GisRequest)(GisResponse)
+    RequestResponse: getPlace(GisPlaceRequest)(GisPlaceResponse)
+    RequestResponse: getNearestPlace(GisNearRequest)(GisNearResponse)
 }

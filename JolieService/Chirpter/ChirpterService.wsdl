@@ -6,24 +6,33 @@
   <wsdl:message name="ChirpterListRequest">
     <wsdl:part name="body" element="xsd1:getChirpList"/>
   </wsdl:message>
-  <wsdl:message name="ChirpterResponse">
+  <wsdl:message name="ChirpterListResponse">
     <wsdl:part name="body" element="xsd1:getChirpListResponse"/>
   </wsdl:message>
-  <wsdl:message name="ChirpterRequest">
+  <wsdl:message name="ChirpterPublishResponse">
+    <wsdl:part name="body" element="xsd1:publishResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChirpterStreamRequest">
     <wsdl:part name="body" element="xsd1:createChirpStream"/>
+  </wsdl:message>
+  <wsdl:message name="ChirpterCreateResponse">
+    <wsdl:part name="body" element="xsd1:createChirpStreamResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChirpterRequest">
+    <wsdl:part name="body" element="xsd1:publish"/>
   </wsdl:message>
   <wsdl:portType name="ChirpterService">
     <wsdl:operation name="publish">
       <wsdl:input message="tns:ChirpterRequest"/>
-      <wsdl:output message="tns:ChirpterResponse"/>
+      <wsdl:output message="tns:ChirpterPublishResponse"/>
     </wsdl:operation>
     <wsdl:operation name="createChirpStream">
-      <wsdl:input message="tns:ChirpterRequest"/>
-      <wsdl:output message="tns:ChirpterResponse"/>
+      <wsdl:input message="tns:ChirpterStreamRequest"/>
+      <wsdl:output message="tns:ChirpterCreateResponse"/>
     </wsdl:operation>
     <wsdl:operation name="getChirpList">
       <wsdl:input message="tns:ChirpterListRequest"/>
-      <wsdl:output message="tns:ChirpterResponse"/>
+      <wsdl:output message="tns:ChirpterListResponse"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ChirpterServiceSOAPBinding" type="tns:ChirpterService">
