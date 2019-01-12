@@ -1,5 +1,6 @@
 type ChirpterRequest: void{
   .authKey: string
+  .chirpID: string
   .msg: string
 }
 
@@ -16,14 +17,20 @@ type Chirp: void{
   .msg: string
 }
 
+type ChirpStream: void{
+  .chirpStreamId: string
+  .chirp: Chirp
+}
+
 type ChirpterUser: void{
   .name: string
   .password: string
   .authKey: string
-  .chirpList: Chirp
+  .chirpStream: Chirp
 }
 
 interface ChirpterInterface{
     RequestResponse: publish(ChirpterRequest)(ChirpterResponse)
+	RequestResponse: createChirpStream(ChirpterRequest)(ChirpterResponse)
     RequestResponse: getChirpList(ChirpterListRequest)(ChirpterResponse)
 }

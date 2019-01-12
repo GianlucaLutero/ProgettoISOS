@@ -8,6 +8,10 @@ type BankResponse: void {
 	.response: string
 }
 
+type AccountResponse: void {
+	.response: string
+}
+
 type TransactionData: void {
 	.from : string
 	.amount : int
@@ -24,10 +28,10 @@ type BankUser: void {
 }
 
 type AccountRequest: void{
-	.user: string
+	.authKey: string
 }
 
 interface BankInterface {
 	RequestResponse: payment(BankRequest)(BankResponse)
-    RequestResponse: checkAccount(AccountRequest)(BankResponse)
+    RequestResponse: checkAccount(AccountRequest)(AccountResponse)
 }

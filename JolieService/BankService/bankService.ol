@@ -71,9 +71,11 @@ main {
 									global.users[j].transactionList[#global.users[j].transactionList] << t;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].from = request.receiver;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].amount = request.amount;
-									global.users[i].credit = global.users[i].credit - request.amount
+									global.users[i].credit = global.users[i].credit - request.amount;
+									j = leng
 								}else{
-									response.response = "{status : sono_povero}"
+									response.response = "{status : sono_povero}";
+									j = leng
 								}
 							}
 						};
@@ -92,7 +94,7 @@ main {
 			leng = #global.users;
 			for( i = 0, i < leng, i++){
 				 println@Console("user name:" + global.users[i].name)();
-				if( request.user == global.users[i].authKey ) {
+				if( request.authKey == global.users[i].authKey ) {
 						response.response = "{ status: OK ,amount:"+global.users[i].credit+" ,transactions : [";
 
 						// Aggiungere tutte le transazioni con il for e in json
