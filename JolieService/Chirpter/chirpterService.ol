@@ -64,6 +64,7 @@ main {
 					tmp.chirpStreamId = global.users[i].name+"chirpStream"+#global.users[i].chirpStream;
 					getCurrentDateTime@Time()(tmp.chirp.time);
           tmp.chirp.msg = request.msg;
+					println@Console("Created chirpStream "+tmp.chirpStreamId+ " for user "+global.users[i].name)();
 					global.users[i].chirpStream[#global.users[i].chirpStream] << tmp;
 					response.response = "{status: chirtpstream_created,id:"+tmp.chirpStreamId+"}"
         }
