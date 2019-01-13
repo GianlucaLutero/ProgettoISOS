@@ -93,11 +93,11 @@
       <bpmn:sequenceFlow id="SequenceFlow_0u6btbw" sourceRef="ParallelGateway_1j0d7vi" targetRef="IntermediateCatchEvent_0lfsu2z" />
       <bpmn:sequenceFlow id="SequenceFlow_161v340" sourceRef="ParallelGateway_1j0d7vi" targetRef="IntermediateThrowEvent_1alumah" />
       <bpmn:sequenceFlow id="SequenceFlow_1i63kkp" sourceRef="ExclusiveGateway_1iqzhaf" targetRef="ParallelGateway_1j0d7vi">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == 0}</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == false}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0o66rq9" sourceRef="Task_1m49sgi" targetRef="EndEvent_1pbgaio" />
       <bpmn:sequenceFlow id="SequenceFlow_0gmwwar" name="payment accepted" sourceRef="ExclusiveGateway_1iqzhaf" targetRef="Task_1m49sgi">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == 1}</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_reservation == true}</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="SequenceFlow_0725nk0" sourceRef="IntermediateCatchEvent_07979u8" targetRef="SendTask_15iffh0" />
       <bpmn:sequenceFlow id="SequenceFlow_04y6k3i" sourceRef="SendTask_030gc85" targetRef="IntermediateCatchEvent_07979u8" />
