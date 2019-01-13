@@ -11,12 +11,12 @@ type GisPlaceRequest: void{
 }
 
 type GisNearResponse: void{
-  .location:Place
+  .location:string
 }
 
 type GisNearRequest: void{
-  .place:Place
-  .placeList:Place
+  .place:string
+  .placeList:string
 }
 
 type GisPlaceResponse: void{

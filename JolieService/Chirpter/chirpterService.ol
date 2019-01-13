@@ -39,7 +39,14 @@ init {
 	global.users[2].authKey = "crisso";
 	global.users[2].chirpStream[0].chirpStreamId ="idProva1";
   global.users[2].chirpStream[0].chirp[0].time ="1/1/2019";
-  global.users[2].chirpStream[0].chirp[0].msg ="W Forli"
+  global.users[2].chirpStream[0].chirp[0].msg ="W Forli";
+
+	global.users[3].name = "ACME";
+	global.users[3].password = "password4";
+	global.users[3].authKey = "conference";
+	global.users[3].chirpStream[0].chirpStreamId ="prova";
+  global.users[3].chirpStream[0].chirp[0].time ="1/1/2019";
+  global.users[3].chirpStream[0].chirp[0].msg ="Conference Call"
 
 }
 

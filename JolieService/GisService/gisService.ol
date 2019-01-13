@@ -67,7 +67,7 @@ main{
         println@Console("Retrieving place "+request.place+" coordinate")();
 
         getJsonString@JsonUtils(global.place[2])(tmp);
-        response.location << tmp
+        response.location = tmp
 
     }]
 }
