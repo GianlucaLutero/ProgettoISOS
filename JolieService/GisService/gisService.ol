@@ -48,7 +48,7 @@ init{
 }
 
 main{
-
+  
     [getPlace(request)(response){
         println@Console("Searching place")();
         response.location = "{status: no_place_found}";
