@@ -142,7 +142,7 @@
       <bpmn:incoming>SequenceFlow_1axblpn</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0xre47f</bpmn:outgoing>
       <bpmn:timerEventDefinition>
-        <bpmn:timeDate xsi:type="bpmn:tFormalExpression">${datails_conference_end_date}</bpmn:timeDate>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT20S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sendTask id="SendTask_164wcpm" name="Calculate total" camunda:class="org.camunda.bpm.client.CalculateTotalDelegate">
@@ -230,10 +230,6 @@
         <bpmn:incoming>SequenceFlow_0nqvvc2</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_169og8s</bpmn:outgoing>
       </bpmn:sendTask>
-      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0xgly7r" name="wait payment request">
-        <bpmn:outgoing>SequenceFlow_0kahs1n</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_1jsrwnp" messageRef="Message_1w0xs4y" />
-      </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="SequenceFlow_0kahs1n" sourceRef="IntermediateCatchEvent_0xgly7r" targetRef="SendTask_1dya8mo" />
       <bpmn:sequenceFlow id="SequenceFlow_0nqvvc2" name="paymend denied" sourceRef="ExclusiveGateway_04yog8h" targetRef="SendTask_1dya8mo">
         <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${payment_payoff == 0}</bpmn:conditionExpression>
@@ -247,6 +243,10 @@
         <bpmn:incoming>SequenceFlow_169og8s</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0x1pad0</bpmn:outgoing>
       </bpmn:serviceTask>
+      <bpmn:startEvent id="IntermediateCatchEvent_0xgly7r" name="wait payment request" isInterrupting="false">
+        <bpmn:outgoing>SequenceFlow_0kahs1n</bpmn:outgoing>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_02t5ffo" messageRef="Message_0sy6up4" />
+      </bpmn:startEvent>
     </bpmn:subProcess>
     <bpmn:association id="Association_0bizy7n" sourceRef="SubProcess_1gkhrb0" targetRef="TextAnnotation_0o7ct2w" />
     <bpmn:textAnnotation id="TextAnnotation_0o7ct2w">
@@ -258,8 +258,8 @@
   <bpmn:message id="Message_0xmqb3n" name="responseACMEPlatformCreation" />
   <bpmn:message id="Message_18nw4ef" name="responsePlaceList" />
   <bpmn:message id="Message_033t4il" />
-  <bpmn:message id="Message_1w0xs4y" name="paymentOffRequest" />
-  <bpmn:message id="Message_0sy6up4" name="responsePayOffResult" />
+  <bpmn:message id="Message_1w0xs4y" />
+  <bpmn:message id="Message_0sy6up4" name="paymentOffRequest" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_104mo33">
       <bpmndi:BPMNShape id="Participant_1mlt9wa_di" bpmnElement="ClientBPMN">
@@ -378,12 +378,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1dya8mo_di" bpmnElement="SendTask_1dya8mo">
         <dc:Bounds x="330" y="95" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_0xgly7r_di" bpmnElement="IntermediateCatchEvent_0xgly7r">
-        <dc:Bounds x="244" y="117" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="230" y="163" width="64" height="27" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0kahs1n_di" bpmnElement="SequenceFlow_0kahs1n">
         <di:waypoint x="280" y="135" />
@@ -592,6 +586,12 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0jc3atz_di" bpmnElement="Task_05ftozg">
         <dc:Bounds x="479" y="95" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1nj36jh_di" bpmnElement="IntermediateCatchEvent_0xgly7r">
+        <dc:Bounds x="244" y="117" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="230" y="163" width="64" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
