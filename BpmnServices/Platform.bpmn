@@ -20,8 +20,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_0ztt186" name="over 24 h" sourceRef="ExclusiveGateway_1nq9ntm" targetRef="EndEvent_0fgt3v1">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_registration_available == 0}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_0pb3r8x" sourceRef="IntermediateCatchEvent_1vq66k8" targetRef="SendTask_0syk7jy" />
-    <bpmn:sequenceFlow id="SequenceFlow_00u5vdl" sourceRef="SendTask_0syk7jy" targetRef="EndEvent_1wqsrgc" />
     <bpmn:sequenceFlow id="SequenceFlow_0i6agyv" sourceRef="SendTask_1fnel6k" targetRef="IntermediateCatchEvent_0yew9k7" />
     <bpmn:sequenceFlow id="SequenceFlow_1hk0qz8" sourceRef="IntermediateCatchEvent_0yew9k7" targetRef="SendTask_0upduos" />
     <bpmn:sequenceFlow id="SequenceFlow_1lt20il" sourceRef="StartEvent_0r07e06" targetRef="IntermediateCatchEvent_16fcaid" />
@@ -147,17 +145,6 @@
     <bpmn:endEvent id="EndEvent_0fgt3v1">
       <bpmn:incoming>SequenceFlow_0ztt186</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1vq66k8" name="Conference participants payment">
-      <bpmn:outgoing>SequenceFlow_0pb3r8x</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_110eqqw" messageRef="Message_1pj45gn" />
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sendTask id="SendTask_0syk7jy" name="Send conference money earned" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.SendConferenceMoneyEarnedDelegate">
-      <bpmn:incoming>SequenceFlow_0pb3r8x</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_00u5vdl</bpmn:outgoing>
-    </bpmn:sendTask>
-    <bpmn:endEvent id="EndEvent_1wqsrgc">
-      <bpmn:incoming>SequenceFlow_00u5vdl</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:subProcess id="SubProcess_18kq6le" triggeredByEvent="true">
       <bpmn:serviceTask id="ServiceTask_1ezfasz" name="Create platform" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.platform.CreatePlatformDelegate">
         <bpmn:incoming>SequenceFlow_10ocp25</bpmn:incoming>
@@ -225,18 +212,6 @@
           <dc:Bounds x="-435" y="158" width="84" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1vq66k8_di" bpmnElement="IntermediateCatchEvent_1vq66k8">
-        <dc:Bounds x="1253" y="178" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1243" y="221" width="57" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="SendTask_0syk7jy_di" bpmnElement="SendTask_0syk7jy">
-        <dc:Bounds x="1339" y="156" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="EndEvent_1wqsrgc_di" bpmnElement="EndEvent_1wqsrgc">
-        <dc:Bounds x="1489" y="178" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_0z9n6xj_di" bpmnElement="ExclusiveGateway_0z9n6xj" isMarkerVisible="true">
         <dc:Bounds x="-109" y="181" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -264,14 +239,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="-161" y="135" width="74" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_00u5vdl_di" bpmnElement="SequenceFlow_00u5vdl">
-        <di:waypoint x="1439" y="196" />
-        <di:waypoint x="1489" y="196" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0pb3r8x_di" bpmnElement="SequenceFlow_0pb3r8x">
-        <di:waypoint x="1289" y="196" />
-        <di:waypoint x="1339" y="196" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_02i6eu8_di" bpmnElement="SequenceFlow_02i6eu8">
         <di:waypoint x="-192" y="206" />
