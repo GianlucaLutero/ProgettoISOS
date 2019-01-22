@@ -177,6 +177,8 @@
             <camunda:formField id="invoice_name" label="Invoice Name" type="string" />
             <camunda:formField id="invoice_amout" label="Invoice Amount" type="long" />
             <camunda:formField id="finish_send_invoice" label="Sending invoices end" type="boolean" defaultValue="false" />
+            <camunda:formField id="invoice_details" label="Invoice Details" type="string" />
+            <camunda:formField id="invoice_address" label="Invoice Address" type="string" />
           </camunda:formData>
         </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_14bkysz</bpmn:incoming>
