@@ -99,6 +99,7 @@
           <camunda:formField id="details_conference_location" label="Location" type="string" />
           <camunda:formField id="details_conference_date" label="Conference Date" type="date" />
           <camunda:formField id="datails_conference_end_date" label="Conference End Date" type="date" />
+          <camunda:formField id="client_name" label="Client Name" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1x3lhs4</bpmn:incoming>
@@ -176,9 +177,9 @@
           <camunda:formData>
             <camunda:formField id="invoice_name" label="Invoice Name" type="string" />
             <camunda:formField id="invoice_amout" label="Invoice Amount" type="long" />
-            <camunda:formField id="finish_send_invoice" label="Sending invoices end" type="boolean" defaultValue="false" />
             <camunda:formField id="invoice_details" label="Invoice Details" type="string" />
             <camunda:formField id="invoice_address" label="Invoice Address" type="string" />
+            <camunda:formField id="finish_send_invoice" label="Check if no more invoice" type="boolean" defaultValue="false" />
           </camunda:formData>
         </bpmn:extensionElements>
         <bpmn:incoming>SequenceFlow_14bkysz</bpmn:incoming>
