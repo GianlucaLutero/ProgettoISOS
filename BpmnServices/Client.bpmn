@@ -176,7 +176,7 @@
         <bpmn:extensionElements>
           <camunda:formData>
             <camunda:formField id="invoice_name" label="Invoice Name" type="string" />
-            <camunda:formField id="invoice_amout" label="Invoice Amount" type="long" />
+            <camunda:formField id="invoice_amount" label="Invoice Amount" type="long" />
             <camunda:formField id="invoice_details" label="Invoice Details" type="string" />
             <camunda:formField id="invoice_address" label="Invoice Address" type="string" />
             <camunda:formField id="finish_send_invoice" label="Check if no more invoice" type="boolean" defaultValue="false" />
