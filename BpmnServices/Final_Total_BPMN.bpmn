@@ -18,14 +18,12 @@
     <bpmn:messageFlow id="MessageFlow_1t6cp7p" sourceRef="SendTask_1m2z12h" targetRef="IntermediateCatchEvent_1msuguc" />
     <bpmn:messageFlow id="MessageFlow_12ha2ph" sourceRef="SendTask_1wueknh" targetRef="IntermediateCatchEvent_1g1bmsn" />
     <bpmn:messageFlow id="MessageFlow_0gh31w0" sourceRef="ServiceTask_0okycax" targetRef="Participant_1fsvris" />
-    <bpmn:messageFlow id="MessageFlow_14xje6k" sourceRef="Participant_1fsvris" targetRef="IntermediateCatchEvent_1gnnb6q" />
     <bpmn:messageFlow id="MessageFlow_1t8rdjw" sourceRef="SendTask_0dtp4it" targetRef="IntermediateCatchEvent_1m0cp93" />
     <bpmn:messageFlow id="MessageFlow_0wpww9h" sourceRef="SendTask_1i4glm7" targetRef="StartEvent_1m8tl2q" />
     <bpmn:messageFlow id="MessageFlow_0w9e3xo" sourceRef="SendTask_0wvpae1" targetRef="Participant_0qgll6f" />
     <bpmn:messageFlow id="MessageFlow_0pukkn9" sourceRef="SendTask_0huufp3" targetRef="StartEvent_1y87p0w" />
     <bpmn:messageFlow id="MessageFlow_1ffzzm2" sourceRef="ServiceTask_14rywwf" targetRef="IntermediateCatchEvent_11yunuj" />
     <bpmn:messageFlow id="MessageFlow_0idjjtt" sourceRef="SendTask_0ee30zy" targetRef="Participant_0milhon" />
-    <bpmn:messageFlow id="MessageFlow_0zbgg7b" sourceRef="Participant_0milhon" targetRef="IntermediateCatchEvent_1gp8of7" />
     <bpmn:messageFlow id="MessageFlow_0t2ydlx" sourceRef="SendTask_04r8md7" targetRef="Participant_0milhon" />
     <bpmn:messageFlow id="MessageFlow_1w34r4h" sourceRef="IntermediateThrowEvent_0skfrqy" targetRef="IntermediateCatchEvent_0uv9e1g" />
     <bpmn:messageFlow id="MessageFlow_1yxnlg5" sourceRef="SendTask_1y2e4kk" targetRef="StartEvent_1f7tuvx" />
@@ -452,7 +450,7 @@
       </bpmn:eventBasedGateway>
       <bpmn:serviceTask id="ServiceTask_0okycax" name="Search for Catering" camunda:class="org.camunda.bpm.DelegateACME.CheckAcmeStatus">
         <bpmn:incoming>SequenceFlow_1rm5d5e</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1vlbpp5</bpmn:outgoing>
+        <bpmn:outgoing>SequenceFlow_1438mw4</bpmn:outgoing>
       </bpmn:serviceTask>
       <bpmn:serviceTask id="ServiceTask_0qvofl1" name="Search Conference Space" camunda:class="org.camunda.bpm.DelegateACME.SearchConferenceSpaceDelegate">
         <bpmn:incoming>SequenceFlow_04fqtks</bpmn:incoming>
@@ -463,17 +461,12 @@
         </bpmn:dataOutputAssociation>
       </bpmn:serviceTask>
       <bpmn:userTask id="UserTask_1krp5s3" name="Reserve Catering">
-        <bpmn:incoming>SequenceFlow_076t2g0</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_1438mw4</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_04xm5gy</bpmn:outgoing>
       </bpmn:userTask>
       <bpmn:endEvent id="EndEvent_16cised">
         <bpmn:incoming>SequenceFlow_04xm5gy</bpmn:incoming>
       </bpmn:endEvent>
-      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1gnnb6q" name="Wait GIS Response">
-        <bpmn:incoming>SequenceFlow_1vlbpp5</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_076t2g0</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_1ccpds8" />
-      </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="SendTask_1747cip" name="Send Place List" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:class="org.camunda.bpm.DelegateACME.SendPlaceListDelegate">
         <bpmn:incoming>SequenceFlow_14gpyr2</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0pyhx57</bpmn:outgoing>
@@ -500,7 +493,6 @@
       <bpmn:sequenceFlow id="SequenceFlow_0bnzyfh" sourceRef="EventBasedGateway_1nsmtt4" targetRef="IntermediateCatchEvent_0x3jh9o" />
       <bpmn:sequenceFlow id="SequenceFlow_01l72zr" sourceRef="StartEvent_0e9xmhv" targetRef="IntermediateCatchEvent_12qwtdz" />
       <bpmn:sequenceFlow id="SequenceFlow_0ttw74u" sourceRef="IntermediateCatchEvent_12qwtdz" targetRef="ServiceTask_0qvofl1" />
-      <bpmn:sequenceFlow id="SequenceFlow_1vlbpp5" sourceRef="ServiceTask_0okycax" targetRef="IntermediateCatchEvent_1gnnb6q" />
       <bpmn:sequenceFlow id="SequenceFlow_1rm5d5e" sourceRef="ExclusiveGateway_0g6oesa" targetRef="ServiceTask_0okycax" />
       <bpmn:sequenceFlow id="SequenceFlow_0exf88u" sourceRef="IntermediateCatchEvent_1msuguc" targetRef="ExclusiveGateway_0g6oesa" />
       <bpmn:sequenceFlow id="SequenceFlow_1ejfih5" sourceRef="ServiceTask_0yb7bx5" targetRef="ExclusiveGateway_0g6oesa" />
@@ -508,9 +500,9 @@
       <bpmn:sequenceFlow id="SequenceFlow_0we3jup" sourceRef="EventBasedGateway_1nsmtt4" targetRef="IntermediateCatchEvent_1g1bmsn" />
       <bpmn:sequenceFlow id="SequenceFlow_0pyhx57" sourceRef="SendTask_1747cip" targetRef="EventBasedGateway_1nsmtt4" />
       <bpmn:sequenceFlow id="SequenceFlow_04xm5gy" sourceRef="UserTask_1krp5s3" targetRef="EndEvent_16cised" />
-      <bpmn:sequenceFlow id="SequenceFlow_076t2g0" sourceRef="IntermediateCatchEvent_1gnnb6q" targetRef="UserTask_1krp5s3" />
       <bpmn:sequenceFlow id="SequenceFlow_14gpyr2" sourceRef="ServiceTask_0qvofl1" targetRef="SendTask_1747cip" />
       <bpmn:sequenceFlow id="SequenceFlow_02cc0c2" sourceRef="IntermediateCatchEvent_1g1bmsn" targetRef="ServiceTask_0yb7bx5" />
+      <bpmn:sequenceFlow id="SequenceFlow_1438mw4" sourceRef="ServiceTask_0okycax" targetRef="UserTask_1krp5s3" />
       <bpmn:textAnnotation id="TextAnnotation_0vs22dt">
         <bpmn:text>Dobbiamo gestire l'errore?? cioè se il client non risponde o muore?</bpmn:text>
       </bpmn:textAnnotation>
@@ -562,17 +554,8 @@
           <bpmn:loopCardinality xsi:type="bpmn:tFormalExpression">10</bpmn:loopCardinality>
         </bpmn:multiInstanceLoopCharacteristics>
       </bpmn:serviceTask>
-      <bpmn:sendTask id="SendTask_0ee30zy" name="Create ChirpStream" camunda:class="org.camunda.bpm.DelegateACME.CheckAcmeStatus">
-        <bpmn:incoming>SequenceFlow_00mgdfo</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_1o14s06</bpmn:outgoing>
-      </bpmn:sendTask>
-      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1gp8of7" name="wait for creation">
-        <bpmn:incoming>SequenceFlow_1o14s06</bpmn:incoming>
-        <bpmn:outgoing>SequenceFlow_0e46ikl</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0xwkv9y" />
-      </bpmn:intermediateCatchEvent>
       <bpmn:serviceTask id="ServiceTask_0hr897s" name="Get Relevant Dates" camunda:class="org.camunda.bpm.DelegateACME.CheckAcmeStatus">
-        <bpmn:incoming>SequenceFlow_0e46ikl</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_0lizr65</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1lybxyf</bpmn:outgoing>
       </bpmn:serviceTask>
       <bpmn:startEvent id="StartEvent_1dln2yh">
@@ -581,13 +564,16 @@
       <bpmn:sequenceFlow id="SequenceFlow_14jyhg8" sourceRef="IntermediateCatchEvent_0x63z61" targetRef="EndEvent_1nkmzj0" />
       <bpmn:sequenceFlow id="SequenceFlow_1iua64b" sourceRef="EventBasedGateway_16w6l6e" targetRef="IntermediateCatchEvent_0x63z61" />
       <bpmn:sequenceFlow id="SequenceFlow_0ne14am" sourceRef="SendTask_04r8md7" targetRef="EventBasedGateway_16w6l6e" />
-      <bpmn:sequenceFlow id="SequenceFlow_0e46ikl" sourceRef="IntermediateCatchEvent_1gp8of7" targetRef="ServiceTask_0hr897s" />
       <bpmn:sequenceFlow id="SequenceFlow_18p2z1l" sourceRef="IntermediateCatchEvent_11t0q91" targetRef="SendTask_04r8md7" />
       <bpmn:sequenceFlow id="SequenceFlow_1s6a7lm" sourceRef="ServiceTask_0m5bnwd" targetRef="EventBasedGateway_16w6l6e" />
       <bpmn:sequenceFlow id="SequenceFlow_0yw7ki3" sourceRef="EventBasedGateway_16w6l6e" targetRef="IntermediateCatchEvent_11t0q91" />
       <bpmn:sequenceFlow id="SequenceFlow_1lybxyf" sourceRef="ServiceTask_0hr897s" targetRef="ServiceTask_0m5bnwd" />
-      <bpmn:sequenceFlow id="SequenceFlow_1o14s06" sourceRef="SendTask_0ee30zy" targetRef="IntermediateCatchEvent_1gp8of7" />
       <bpmn:sequenceFlow id="SequenceFlow_00mgdfo" sourceRef="StartEvent_1dln2yh" targetRef="SendTask_0ee30zy" />
+      <bpmn:sequenceFlow id="SequenceFlow_0lizr65" sourceRef="SendTask_0ee30zy" targetRef="ServiceTask_0hr897s" />
+      <bpmn:serviceTask id="SendTask_0ee30zy" name="Create ChirpStream" camunda:class="org.camunda.bpm.DelegateACME.CheckAcmeStatus">
+        <bpmn:incoming>SequenceFlow_00mgdfo</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_0lizr65</bpmn:outgoing>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:subProcess id="SubProcess_1xfehk9" name="Partecipant Reservation Management" triggeredByEvent="true">
       <bpmn:serviceTask id="ServiceTask_0uou5u8" name="Decreasing Holdings &#10;Available" camunda:class="org.camunda.bpm.DelegateACME.DecreasingHoldingAvaibleDelegate">
@@ -1734,12 +1720,6 @@
       <bpmndi:BPMNShape id="EndEvent_16cised_di" bpmnElement="EndEvent_16cised">
         <dc:Bounds x="493" y="1386" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1gnnb6q_di" bpmnElement="IntermediateCatchEvent_1gnnb6q">
-        <dc:Bounds x="285" y="1386" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="278" y="1355" width="50" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1747cip_di" bpmnElement="SendTask_1747cip">
         <dc:Bounds x="-455" y="1364" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -1797,17 +1777,8 @@
       <bpmndi:BPMNShape id="ServiceTask_0m5bnwd_di" bpmnElement="ServiceTask_0m5bnwd">
         <dc:Bounds x="1364" y="1358" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="SendTask_0ee30zy_di" bpmnElement="SendTask_0ee30zy">
-        <dc:Bounds x="973" y="1358" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_1gp8of7_di" bpmnElement="IntermediateCatchEvent_1gp8of7">
-        <dc:Bounds x="1120" y="1380" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1099" y="1362" width="77" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0hr897s_di" bpmnElement="ServiceTask_0hr897s">
-        <dc:Bounds x="1206" y="1358" width="100" height="80" />
+        <dc:Bounds x="1153" y="1358" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_1dln2yh_di" bpmnElement="StartEvent_1dln2yh">
         <dc:Bounds x="869" y="1380" width="36" height="36" />
@@ -1924,10 +1895,6 @@
         <di:waypoint x="-655" y="1404" />
         <di:waypoint x="-605" y="1404" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1vlbpp5_di" bpmnElement="SequenceFlow_1vlbpp5">
-        <di:waypoint x="249" y="1404" />
-        <di:waypoint x="285" y="1404" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1rm5d5e_di" bpmnElement="SequenceFlow_1rm5d5e">
         <di:waypoint x="101" y="1404" />
         <di:waypoint x="149" y="1404" />
@@ -1959,10 +1926,6 @@
       <bpmndi:BPMNEdge id="SequenceFlow_04xm5gy_di" bpmnElement="SequenceFlow_04xm5gy">
         <di:waypoint x="461" y="1404" />
         <di:waypoint x="493" y="1404" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_076t2g0_di" bpmnElement="SequenceFlow_076t2g0">
-        <di:waypoint x="321" y="1404" />
-        <di:waypoint x="361" y="1404" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_14gpyr2_di" bpmnElement="SequenceFlow_14gpyr2">
         <di:waypoint x="-505" y="1404" />
@@ -2010,10 +1973,6 @@
         <di:waypoint x="1480" y="1457" />
         <di:waypoint x="1525" y="1411" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0e46ikl_di" bpmnElement="SequenceFlow_0e46ikl">
-        <di:waypoint x="1156" y="1398" />
-        <di:waypoint x="1206" y="1398" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_18p2z1l_di" bpmnElement="SequenceFlow_18p2z1l">
         <di:waypoint x="1669" y="1478" />
         <di:waypoint x="1717" y="1478" />
@@ -2028,12 +1987,8 @@
         <di:waypoint x="1633" y="1478" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1lybxyf_di" bpmnElement="SequenceFlow_1lybxyf">
-        <di:waypoint x="1306" y="1398" />
+        <di:waypoint x="1253" y="1398" />
         <di:waypoint x="1364" y="1398" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1o14s06_di" bpmnElement="SequenceFlow_1o14s06">
-        <di:waypoint x="1073" y="1398" />
-        <di:waypoint x="1120" y="1398" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_00mgdfo_di" bpmnElement="SequenceFlow_00mgdfo">
         <di:waypoint x="905" y="1398" />
@@ -2605,11 +2560,6 @@
         <di:waypoint x="199" y="1444" />
         <di:waypoint x="199" y="2694" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_14xje6k_di" bpmnElement="MessageFlow_14xje6k">
-        <di:waypoint x="230" y="2694" />
-        <di:waypoint x="230" y="1483" />
-        <di:waypoint x="291" y="1417" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_1t8rdjw_di" bpmnElement="MessageFlow_1t8rdjw">
         <di:waypoint x="393" y="534" />
         <di:waypoint x="393" y="872" />
@@ -2642,10 +2592,6 @@
       <bpmndi:BPMNEdge id="MessageFlow_0idjjtt_di" bpmnElement="MessageFlow_0idjjtt">
         <di:waypoint x="1023" y="1438" />
         <di:waypoint x="1023" y="2419" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="MessageFlow_0zbgg7b_di" bpmnElement="MessageFlow_0zbgg7b">
-        <di:waypoint x="1138" y="2419" />
-        <di:waypoint x="1138" y="1416" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="MessageFlow_0t2ydlx_di" bpmnElement="MessageFlow_0t2ydlx">
         <di:waypoint x="1767" y="1518" />
@@ -2767,6 +2713,17 @@
         <di:waypoint x="754" y="3213" />
         <di:waypoint x="754" y="2348" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1438mw4_di" bpmnElement="SequenceFlow_1438mw4">
+        <di:waypoint x="249" y="1404" />
+        <di:waypoint x="361" y="1404" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0lizr65_di" bpmnElement="SequenceFlow_0lizr65">
+        <di:waypoint x="1073" y="1398" />
+        <di:waypoint x="1153" y="1398" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1df7abg_di" bpmnElement="SendTask_0ee30zy">
+        <dc:Bounds x="973" y="1358" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
