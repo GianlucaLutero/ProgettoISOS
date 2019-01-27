@@ -43,6 +43,8 @@
     <bpmn:messageFlow id="MessageFlow_07z1k1n" sourceRef="SendTask_1l4oyvx" targetRef="IntermediateCatchEvent_18r4cz1" />
     <bpmn:messageFlow id="MessageFlow_0zhbgnm" sourceRef="SendTask_10tnrc9" targetRef="IntermediateCatchEvent_0gd3u4v" />
     <bpmn:messageFlow id="MessageFlow_0do7i4e" sourceRef="SendTask_1s82bx5" targetRef="Participant_0qgll6f" />
+    <bpmn:messageFlow id="MessageFlow_0pfslkc" sourceRef="IntermediateThrowEvent_1ergkpp" targetRef="IntermediateCatchEvent_0uv9e1g" />
+    <bpmn:messageFlow id="MessageFlow_1mhy3m4" sourceRef="SendTask_0sajwiq" targetRef="IntermediateCatchEvent_0x3jh9o" />
   </bpmn:collaboration>
   <bpmn:process id="Process_1" isExecutable="true">
     <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_16kwkhw" name="wait positive acme response ">
@@ -439,7 +441,7 @@
         <bpmn:incoming>SequenceFlow_02cc0c2</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1ejfih5</bpmn:outgoing>
       </bpmn:serviceTask>
-      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1msuguc" name="Wait Client&#10; Chose">
+      <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1msuguc" name="Wait Client&#10; Choose">
         <bpmn:incoming>SequenceFlow_0xoabyv</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_0exf88u</bpmn:outgoing>
         <bpmn:messageEventDefinition id="MessageEventDefinition_1bzj3j3" />
@@ -762,7 +764,7 @@
       <bpmn:outgoing>SequenceFlow_175k6ov</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="SequenceFlow_0r4ipx1" sourceRef="IntermediateThrowEvent_1ergkpp" targetRef="EndEvent_1x6y9w1" />
-    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1ergkpp">
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1ergkpp" name="notify payment accepted">
       <bpmn:incoming>SequenceFlow_0obuv6u</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0r4ipx1</bpmn:outgoing>
       <bpmn:messageEventDefinition />
@@ -1557,7 +1559,7 @@
         <di:waypoint x="2829" y="1400" />
         <di:waypoint x="2904" y="1400" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2845" y="1367" width="45" height="27" />
+          <dc:Bounds x="2831" y="1367" width="45" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_175k6ov_di" bpmnElement="SequenceFlow_175k6ov">
@@ -1830,7 +1832,7 @@
       <bpmndi:BPMNShape id="IntermediateCatchEvent_01bueor_di" bpmnElement="IntermediateCatchEvent_01bueor">
         <dc:Bounds x="683" y="1896" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="667" y="1858.5" width="67" height="27" />
+          <dc:Bounds x="667" y="1872" width="67" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_02vuhn6_di" bpmnElement="IntermediateCatchEvent_02vuhn6">
@@ -2673,6 +2675,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_1i4mkhm_di" bpmnElement="IntermediateThrowEvent_1ergkpp">
         <dc:Bounds x="2904" y="1382" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2886" y="1425" width="72" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="MessageFlow_1yxnlg5_di" bpmnElement="MessageFlow_1yxnlg5">
         <di:waypoint x="-110" y="511" />
@@ -2766,6 +2771,20 @@
       <bpmndi:BPMNEdge id="MessageFlow_0do7i4e_di" bpmnElement="MessageFlow_0do7i4e">
         <di:waypoint x="754" y="3213" />
         <di:waypoint x="754" y="2348" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_0pfslkc_di" bpmnElement="MessageFlow_0pfslkc">
+        <di:waypoint x="2928" y="1383" />
+        <di:waypoint x="2953" y="1310" />
+        <di:waypoint x="2953" y="866" />
+        <di:waypoint x="517" y="866" />
+        <di:waypoint x="517" y="556" />
+        <di:waypoint x="530" y="518" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1mhy3m4_di" bpmnElement="MessageFlow_1mhy3m4">
+        <di:waypoint x="-314" y="254" />
+        <di:waypoint x="-409" y="286" />
+        <di:waypoint x="-409" y="1502" />
+        <di:waypoint x="-309" y="1552" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
