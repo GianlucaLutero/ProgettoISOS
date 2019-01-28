@@ -42,7 +42,15 @@ init {
   global.users[2].credit = 111;
 	global.users[2].transactionList[0].from = "abc";
 	global.users[2].transactionList[0].amount = 1;
-	global.users[2].transactionList[0].time = "1/1/2019"
+	global.users[2].transactionList[0].time = "1/1/2019";
+
+	global.users[3].name = "ACME";
+  global.users[3].password = "password4";
+	global.users[3].authKey = "conference";
+  global.users[3].credit = 10000000;
+	global.users[3].transactionList[0].from = "davide";
+	global.users[3].transactionList[0].amount = 1;
+	global.users[3].transactionList[0].time = "1/1/2019"
 }
 
 main {
