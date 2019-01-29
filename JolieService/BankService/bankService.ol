@@ -141,7 +141,8 @@ main {
 			for ( i=0, i< #global.users, i++ ) {
 				if(global.users[i].name == request.name){
 					println@Console( "AuthKey request from "+ global.users[i].name)();
-					response.authKey = global.users[i].name
+					response.authKey = global.users[i].authKey;
+					i = #global.users
 				}
 			}
 
