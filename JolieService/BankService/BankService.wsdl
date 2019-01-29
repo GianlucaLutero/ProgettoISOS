@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions targetNamespace="org.camunda.bpm.ExternalService.wsdl" xmlns:xsd1="org.camunda.bpm.ExternalService.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="org.camunda.bpm.ExternalService.wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
-    <xs:schema targetNamespace="org.camunda.bpm.ExternalService.xsd" xmlns:sch="org.camunda.bpm.ExternalService.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="checkAccount"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="authKey" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="checkAccountResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="response" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="payment"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="authKey" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="amount" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="receiver" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="paymentResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="response" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+    <xs:schema targetNamespace="org.camunda.bpm.ExternalService.xsd" xmlns:sch="org.camunda.bpm.ExternalService.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="getAuthKey"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="getAuthKeyResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="authKey" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="checkAccount"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="authKey" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="checkAccountResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="response" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="payment"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="authKey" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="amount" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="receiver" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="paymentResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="response" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema>
   </wsdl:types>
   <wsdl:message name="AccountResponse">
     <wsdl:part name="body" element="xsd1:checkAccountResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AuthResponse">
+    <wsdl:part name="body" element="xsd1:getAuthKeyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AuthRequest">
+    <wsdl:part name="body" element="xsd1:getAuthKey"/>
   </wsdl:message>
   <wsdl:message name="AccountRequest">
     <wsdl:part name="body" element="xsd1:checkAccount"/>
@@ -16,6 +22,10 @@
     <wsdl:part name="body" element="xsd1:payment"/>
   </wsdl:message>
   <wsdl:portType name="BankService">
+    <wsdl:operation name="getAuthKey">
+      <wsdl:input message="tns:AuthRequest"/>
+      <wsdl:output message="tns:AuthResponse"/>
+    </wsdl:operation>
     <wsdl:operation name="checkAccount">
       <wsdl:input message="tns:AccountRequest"/>
       <wsdl:output message="tns:AccountResponse"/>
@@ -27,6 +37,15 @@
   </wsdl:portType>
   <wsdl:binding name="BankServiceSOAPBinding" type="tns:BankService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAuthKey">
+      <soap:operation soapAction="getAuthKey" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="checkAccount">
       <soap:operation soapAction="checkAccount" style="document"/>
       <wsdl:input>

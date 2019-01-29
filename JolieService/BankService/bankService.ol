@@ -133,5 +133,17 @@ main {
 
 		}]
 
+		// getAuthKey
+		[getAuthKey( request )( response ){
+
+			response.authKey = "noKey";
+
+			for ( i=0, i< #global.users, i++ ) {
+				if(global.users[i].name == request.name)
+					response.authKey = global.users[i].name
+			}
+
+		}]
+
 	}
 }

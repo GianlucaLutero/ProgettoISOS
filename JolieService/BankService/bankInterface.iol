@@ -31,7 +31,15 @@ type AccountRequest: void{
 	.authKey: string
 }
 
+type AuthRequest: void{
+	.name : string
+}
+
+type AuthResponse: void{
+	.authKey : string
+}
 interface BankInterface {
 	RequestResponse: payment(BankRequest)(BankResponse)
-    RequestResponse: checkAccount(AccountRequest)(AccountResponse)
+  RequestResponse: checkAccount(AccountRequest)(AccountResponse)
+	RequestResponse: getAuthKey(AuthRequest)(AuthResponse)
 }
