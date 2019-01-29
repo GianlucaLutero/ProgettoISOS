@@ -75,7 +75,7 @@ main {
 									t.from = global.users[i].name;
 									t.amount = request.amount;
 									getCurrentDateTime@Time()(t.time);
-									println@Console("Payment done for "+t.from+" in date "+t.time+" of " + t.amount)();
+									println@Console("Payment done for "+t.from+" in date "+t.time+" of " + t.amount + " to "+global.users[j])();
 									global.users[j].transactionList[#global.users[j].transactionList] << t;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].from = request.receiver;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].amount = request.amount;
@@ -139,8 +139,10 @@ main {
 			response.authKey = "noKey";
 
 			for ( i=0, i< #global.users, i++ ) {
-				if(global.users[i].name == request.name)
+				if(global.users[i].name == request.name){
+					println@Console( "AuthKey request from "+ global.users[i].name)();
 					response.authKey = global.users[i].name
+				}
 			}
 
 		}]
