@@ -48,7 +48,7 @@ init{
 }
 
 main{
-  
+
     [getPlace(request)(response){
         println@Console("Searching place")();
         response.location = "{status: no_place_found}";
@@ -65,8 +65,7 @@ main{
     [getNearestPlace( request )( response ) {
 
         println@Console("Retrieving place "+request.place+" coordinate")();
-
-        getJsonString@JsonUtils(global.place[2])(tmp);
+        getJsonString@JsonUtils(request.placeList)(tmp);
         response.location = tmp
 
     }]
