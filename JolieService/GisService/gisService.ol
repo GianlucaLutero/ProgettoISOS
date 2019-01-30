@@ -65,7 +65,11 @@ main{
     [getNearestPlace( request )( response ) {
 
         println@Console("Retrieving place "+request.place+" coordinate")();
-        getJsonString@JsonUtils(request.placeList)(tmp);
+        println@Console("List of candidates "+request.placeList)();
+
+        //getJsonString@JsonUtils(request.placeList)(tmp);
+        getJsonString@JsonUtils(request)(tmp);
+        println@Console("example "+tmp)();
         response.location = tmp
 
     }]
