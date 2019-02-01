@@ -1,6 +1,8 @@
 include "gisInterface.iol"
+include "selectorInterface.iol"
 include "console.iol"
 include "json_utils.iol"
+
 
 execution {concurrent}
 
@@ -8,6 +10,14 @@ inputPort GisService {
   Location: "socket://localhost:8002"
   Protocol: http
   Interfaces: GisInterface
+}
+
+outputPort Selector {
+  Interfaces: SelectorInterface
+}
+
+embedded {
+  JavaScript: "placeSelector.js" in Selector
 }
 
 /*
@@ -68,7 +78,9 @@ main{
         println@Console("List of candidates "+request.placeList)();
 
         //getJsonString@JsonUtils(request.placeList)(tmp);
-        getJsonString@JsonUtils(request)(tmp);
+        //getJsonString@JsonUtils(request)(tmp);
+        pRequest.list = request.placeList;
+        placeSelector@Selector(pRequest)(tmp);
         println@Console("example "+tmp)();
         response.location = tmp
 
