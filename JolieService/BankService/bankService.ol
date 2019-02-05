@@ -62,6 +62,7 @@ main {
 		//payment
 		[ payment( request )( response ){
 			leng = #global.users;
+			println@Console("AuthKey payment request:" + request.authKey)();
 			for( i = 0, i < leng, i++){
 				// println@Console("user name:" + global.users[i].name)();
 				if( request.authKey == global.users[i].authKey ) {
@@ -75,14 +76,15 @@ main {
 									t.from = global.users[i].name;
 									t.amount = request.amount;
 									getCurrentDateTime@Time()(t.time);
-									println@Console("Payment done for "+t.from+" in date "+t.time+" of " + t.amount + " to "+global.users[j])();
+									println@Console("Payment done for "+t.from+" in date "+t.time+" of " + t.amount + " to "+global.users[j].name)();
 									global.users[j].transactionList[#global.users[j].transactionList] << t;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].from = request.receiver;
 									//global.users[j].transactionList[#global.users[j].transactionList+1].amount = request.amount;
 									global.users[i].credit = global.users[i].credit - request.amount;
+									response.response = "{status: ok}";
 									j = leng
 								}else{
-									response.response = "{status : sono_povero}";
+									response.response = "{status : not_enought_money}";
 									j = leng
 								}
 							}
@@ -93,7 +95,6 @@ main {
 					response.response = "{error : wrong_authentication}"
 				}
 			}
-
 
 		}]
 
@@ -136,12 +137,12 @@ main {
 		// getAuthKey
 		[getAuthKey( request )( response ){
 
-			response.authKey = "noKey";
+			response.response = "noKey";
 
 			for ( i=0, i< #global.users, i++ ) {
 				if(global.users[i].name == request.name){
 					println@Console( "AuthKey request from "+ global.users[i].name)();
-					response.authKey = global.users[i].authKey;
+					response.response = global.users[i].authKey;
 					i = #global.users
 				}
 			}

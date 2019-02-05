@@ -36,7 +36,7 @@ type AuthRequest: void{
 }
 
 type AuthResponse: void{
-	.authKey : string
+	.response : string
 }
 interface BankInterface {
 	RequestResponse: payment(BankRequest)(BankResponse)
