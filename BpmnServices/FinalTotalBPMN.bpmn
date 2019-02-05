@@ -46,6 +46,7 @@
     <bpmn:messageFlow id="MessageFlow_0n7tdrb" sourceRef="EndEvent_10lhs9j" targetRef="IntermediateCatchEvent_1efu4oo" />
     <bpmn:messageFlow id="MessageFlow_1aw93cv" sourceRef="EndEvent_0ntqylk" targetRef="IntermediateCatchEvent_00qwmfy" />
     <bpmn:messageFlow id="MessageFlow_0aj900j" sourceRef="SendTask_1j2zq33" targetRef="IntermediateCatchEvent_0w9aoh3" />
+    <bpmn:messageFlow id="MessageFlow_1g2f2dq" sourceRef="ServiceTask_0zhif9u" targetRef="Participant_1ssrou2" />
   </bpmn:collaboration>
   <bpmn:process id="Process_1" isExecutable="true">
     <bpmn:subProcess id="SubProcess_1q6mo30" name="All inclusive">
@@ -301,14 +302,6 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0gwocoo" sourceRef="IntermediateCatchEvent_0o8mw9d" targetRef="EndEvent_12isyvo" />
-    <bpmn:textAnnotation id="TextAnnotation_0e8c24a">
-      <bpmn:text>Scelta progettuale: la creazione della piattaforma implica l'inizio di questo processo. Il cliente puo cominciare a richiedere il pagamento di fatture ad ACME solo dopo che la piattaforma sia creata.</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:textAnnotation id="TextAnnotation_0uxqduy">
-      <bpmn:text>Necessario per evitare che l'istanza del client venga persa. In questo modo siamo sicuri di attendere correttamente il messaggio per il pagamento del saldo</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_1o3m139" sourceRef="SubProcess_1ykdwxe" targetRef="TextAnnotation_0e8c24a" />
-    <bpmn:association id="Association_1cmzrlc" sourceRef="IntermediateCatchEvent_0o8mw9d" targetRef="TextAnnotation_0uxqduy" />
   </bpmn:process>
   <bpmn:process id="Process_1gwpr8e" isExecutable="false">
     <bpmn:startEvent id="StartEvent_1ppfyrq" name="sign up for conference">
@@ -573,10 +566,6 @@
       <bpmn:sequenceFlow id="SequenceFlow_1g1hdib" sourceRef="ParallelGateway_0gk0qgc" targetRef="EndEvent_0ntqylk" />
       <bpmn:sequenceFlow id="SequenceFlow_14975jz" sourceRef="ParallelGateway_0gk0qgc" targetRef="IntermediateCatchEvent_0w9aoh3" />
       <bpmn:sequenceFlow id="SequenceFlow_15h09fd" sourceRef="IntermediateCatchEvent_0w9aoh3" targetRef="SendTask_0x36aid" />
-      <bpmn:textAnnotation id="TextAnnotation_0pqww4a">
-        <bpmn:text>Scala temporaneamente il numero di posti disponibili riservandolo al partecipante che ha la sessione aperta</bpmn:text>
-      </bpmn:textAnnotation>
-      <bpmn:association id="Association_0ctfkek" sourceRef="SendTask_0d01gir" targetRef="TextAnnotation_0pqww4a" />
     </bpmn:subProcess>
     <bpmn:boundaryEvent id="BoundaryEvent_11zjpxj" name="Time Out Session" attachedToRef="SubProcess_1m4u9jh">
       <bpmn:outgoing>SequenceFlow_12wnpaq</bpmn:outgoing>
@@ -602,15 +591,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_0j29cqk" sourceRef="ExclusiveGateway_17torzx" targetRef="SubProcess_1m4u9jh">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${check_available == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:textAnnotation id="TextAnnotation_07h4ijc">
-      <bpmn:text>Selta progettuale: diamo per scontato che la lista delle conferenze e la loro disponibilità siano già conosciute o presenti nella piattaforma</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:textAnnotation id="TextAnnotation_1pn36pc">
-      <bpmn:text>Viene fatto interamente il controllo della terminazione delle prenotazioni entro il primo giorno dall'inizio della conferenza</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_1eyx7z6" sourceRef="SendTask_1uzxd4x" targetRef="TextAnnotation_07h4ijc" />
-    <bpmn:association id="Association_1dqpk8h" sourceRef="SendTask_0mhmyfr" targetRef="TextAnnotation_07h4ijc" />
-    <bpmn:association id="Association_0axdezj" sourceRef="SendTask_1uzxd4x" targetRef="TextAnnotation_1pn36pc" />
   </bpmn:process>
   <bpmn:process id="Process_1csvl4e" isExecutable="false">
     <bpmn:subProcess id="SubProcess_0jpcoie" name="Payment reminder">
@@ -745,15 +725,6 @@
       <bpmn:sequenceFlow id="SequenceFlow_1fvi8d3" sourceRef="UserTask_01lyz4s" targetRef="EndEvent_1qnbizc" />
       <bpmn:sequenceFlow id="SequenceFlow_14hn17b" sourceRef="ServiceTask_1ecsaja" targetRef="SendTask_0nb98x3" />
       <bpmn:sequenceFlow id="SequenceFlow_0rjpeu9" sourceRef="IntermediateCatchEvent_0vns7v0" targetRef="ServiceTask_0geq046" />
-      <bpmn:textAnnotation id="TextAnnotation_08jufny">
-        <bpmn:text>A questo punto sappiamo qual è l'hotel da dare in input al GIS</bpmn:text>
-      </bpmn:textAnnotation>
-      <bpmn:textAnnotation id="TextAnnotation_0qrxmrn">
-        <bpmn:text>Scelta progettuale: ACME Conference ricerca in automatico la lista dei luoghi disponibili per una conferenza</bpmn:text>
-      </bpmn:textAnnotation>
-      <bpmn:association id="Association_1fdc6i5" sourceRef="ServiceTask_0zhif9u" targetRef="TextAnnotation_08jufny" />
-      <bpmn:association id="Association_0wxkpcv" sourceRef="ServiceTask_0zhif9u" targetRef="TextAnnotation_0lq6bhz" />
-      <bpmn:association id="Association_1kq5y5r" sourceRef="ServiceTask_1ecsaja" targetRef="TextAnnotation_0qrxmrn" />
     </bpmn:subProcess>
     <bpmn:subProcess id="SubProcess_1x6fjpw" name="Chirpter">
       <bpmn:incoming>SequenceFlow_1omwo0u</bpmn:incoming>
@@ -860,10 +831,6 @@
       <bpmn:sequenceFlow id="SequenceFlow_1e9oh5v" sourceRef="EventBasedGateway_03s7swu" targetRef="IntermediateCatchEvent_0j8o7hn" />
       <bpmn:sequenceFlow id="SequenceFlow_13lzbhq" sourceRef="ServiceTask_1qddvcz" targetRef="EventBasedGateway_03s7swu" />
       <bpmn:sequenceFlow id="SequenceFlow_1u250f4" sourceRef="StartEvent_0zvxhqh" targetRef="ServiceTask_1qddvcz" />
-      <bpmn:textAnnotation id="TextAnnotation_0br6lpw">
-        <bpmn:text>rendo disponibile il posto prenotato in precedenza, perchè sono passati i 15 m</bpmn:text>
-      </bpmn:textAnnotation>
-      <bpmn:association id="Association_0nr2z5d" sourceRef="ServiceTask_1fmo34l" targetRef="TextAnnotation_0br6lpw" />
     </bpmn:subProcess>
     <bpmn:subProcess id="SubProcess_18ldc2d" triggeredByEvent="true">
       <bpmn:exclusiveGateway id="ExclusiveGateway_13srv5d">
@@ -1085,12 +1052,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_0vd5s1c" sourceRef="SendTask_1hdza24" targetRef="IntermediateCatchEvent_17jg2f4" />
     <bpmn:sequenceFlow id="SequenceFlow_0j89eak" sourceRef="ExclusiveGateway_13ceb5y" targetRef="ParallelGateway_0lugfup" />
     <bpmn:sequenceFlow id="SequenceFlow_121rymv" sourceRef="ServiceTask_0teef63" targetRef="ServiceTask_0o8sh4q" />
-    <bpmn:textAnnotation id="TextAnnotation_02ickht">
-      <bpmn:text>Scala temporaneamente il numero di posti disponibili riservandolo al partecipante che ha la sessione aperta</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:textAnnotation id="TextAnnotation_0lq6bhz">
-      <bpmn:text>Questo possiamo farlo perché ACME ha gia tutte le informazioni che gli necessitano, ovvero il luogo della conferenza</bpmn:text>
-    </bpmn:textAnnotation>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1l2julj">
@@ -1174,12 +1135,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1222" y="-37.5" width="75" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0e8c24a_di" bpmnElement="TextAnnotation_0e8c24a">
-        <dc:Bounds x="960" y="88" width="325" height="85" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0uxqduy_di" bpmnElement="TextAnnotation_0uxqduy">
-        <dc:Bounds x="1329" y="56" width="225" height="73" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0gwocoo_di" bpmnElement="SequenceFlow_0gwocoo">
         <di:waypoint x="1278" y="18" />
@@ -1269,14 +1224,6 @@
         <di:waypoint x="-540" y="-102" />
         <di:waypoint x="-540" y="1" />
         <di:waypoint x="-480" y="1" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1o3m139_di" bpmnElement="Association_1o3m139">
-        <di:waypoint x="934" y="68" />
-        <di:waypoint x="998" y="88" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1cmzrlc_di" bpmnElement="Association_1cmzrlc">
-        <di:waypoint x="1276" y="25" />
-        <di:waypoint x="1351" y="56" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0stq1ro_di" bpmnElement="UserTask_0stq1ro">
         <dc:Bounds x="670" y="-287" width="100" height="80" />
@@ -1668,12 +1615,6 @@
           <dc:Bounds x="-141" y="2502.5" width="86" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_07h4ijc_di" bpmnElement="TextAnnotation_07h4ijc">
-        <dc:Bounds x="510" y="2640" width="259" height="79" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1pn36pc_di" bpmnElement="TextAnnotation_1pn36pc">
-        <dc:Bounds x="471" y="2384" width="244" height="83" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BoundaryEvent_11zjpxj_di" bpmnElement="BoundaryEvent_11zjpxj">
         <dc:Bounds x="1943" y="2673" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -1741,18 +1682,6 @@
         <di:waypoint x="834" y="2550" />
         <di:waypoint x="929" y="2550" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1eyx7z6_di" bpmnElement="Association_1eyx7z6">
-        <di:waypoint x="648" y="2590" />
-        <di:waypoint x="645" y="2640" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0axdezj_di" bpmnElement="Association_0axdezj">
-        <di:waypoint x="632" y="2510" />
-        <di:waypoint x="613" y="2467" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1dqpk8h_di" bpmnElement="Association_1dqpk8h">
-        <di:waypoint x="393" y="2572" />
-        <di:waypoint x="549" y="2640" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_12q4984_di" bpmnElement="ServiceTask_12q4984">
         <dc:Bounds x="-563" y="2512" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -1810,9 +1739,6 @@
           <dc:Bounds x="1819" y="2510" width="73" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0pqww4a_di" bpmnElement="TextAnnotation_0pqww4a">
-        <dc:Bounds x="949" y="2427" width="252" height="54" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1xebsh2_di" bpmnElement="SequenceFlow_1xebsh2">
         <di:waypoint x="-463" y="2552" />
         <di:waypoint x="-388" y="2552" />
@@ -1869,10 +1795,6 @@
         <di:waypoint x="1770" y="2645" />
         <di:waypoint x="1484" y="2645" />
         <di:waypoint x="1484" y="2590" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0ctfkek_di" bpmnElement="Association_0ctfkek">
-        <di:waypoint x="1100" y="2510" />
-        <di:waypoint x="1088" y="2481" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_1vqaie8_di" bpmnElement="Participant_1ra7fr5">
         <dc:Bounds x="-864" y="1775" width="5345" height="127" />
@@ -1993,12 +1915,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_08faatl_di" bpmnElement="IntermediateThrowEvent_08faatl">
         <dc:Bounds x="4166" y="775" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_02ickht_di" bpmnElement="TextAnnotation_02ickht">
-        <dc:Bounds x="2023" y="628" width="161" height="74" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0lq6bhz_di" bpmnElement="TextAnnotation_0lq6bhz">
-        <dc:Bounds x="762" y="609" width="333" height="96" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BoundaryEvent_03salcf_di" bpmnElement="BoundaryEvent_03salcf">
         <dc:Bounds x="3939" y="655" width="36" height="36" />
@@ -2235,12 +2151,6 @@
           <dc:Bounds x="412" y="1068" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_08jufny_di" bpmnElement="TextAnnotation_08jufny">
-        <dc:Bounds x="1121" y="1009" width="100" height="68" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0qrxmrn_di" bpmnElement="TextAnnotation_0qrxmrn">
-        <dc:Bounds x="81" y="758" width="188" height="68" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1l6kdnk_di" bpmnElement="EndEvent_1l6kdnk">
         <dc:Bounds x="2479" y="825" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -2292,13 +2202,13 @@
       <bpmndi:BPMNShape id="IntermediateCatchEvent_07qkww5_di" bpmnElement="IntermediateCatchEvent_07qkww5">
         <dc:Bounds x="1413" y="1416" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1397" y="1378.5" width="67" height="27" />
+          <dc:Bounds x="1397" y="1394" width="67" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateCatchEvent_0j8o7hn_di" bpmnElement="IntermediateCatchEvent_0j8o7hn">
         <dc:Bounds x="1413" y="1317" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1394" y="1360" width="75" height="14" />
+          <dc:Bounds x="1393" y="1353" width="75" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EventBasedGateway_03s7swu_di" bpmnElement="EventBasedGateway_03s7swu">
@@ -2309,9 +2219,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1055" y="1336" width="79" height="27" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0br6lpw_di" bpmnElement="TextAnnotation_0br6lpw">
-        <dc:Bounds x="1151" y="1249" width="123" height="72" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_13srv5d_di" bpmnElement="ExclusiveGateway_13srv5d" isMarkerVisible="true">
         <dc:Bounds x="264" y="1368" width="50" height="50" />
@@ -2434,23 +2341,11 @@
         <di:waypoint x="584" y="851" />
         <di:waypoint x="633" y="851" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1fdc6i5_di" bpmnElement="Association_1fdc6i5">
-        <di:waypoint x="1008" y="952" />
-        <di:waypoint x="1121" y="1016" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0wxkpcv_di" bpmnElement="Association_0wxkpcv">
-        <di:waypoint x="953" y="884" />
-        <di:waypoint x="934" y="705" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DataOutputAssociation_13ip4bj_di" bpmnElement="DataOutputAssociation_13ip4bj">
         <di:waypoint x="175" y="964" />
         <di:waypoint x="175" y="1161" />
         <di:waypoint x="328" y="1161" />
         <di:waypoint x="722" y="1377" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1kq5y5r_di" bpmnElement="Association_1kq5y5r">
-        <di:waypoint x="174" y="884" />
-        <di:waypoint x="175" y="826" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_073l57o_di" bpmnElement="SequenceFlow_073l57o">
         <di:waypoint x="2497" y="1038" />
@@ -2521,10 +2416,6 @@
       <bpmndi:BPMNEdge id="SequenceFlow_1u250f4_di" bpmnElement="SequenceFlow_1u250f4">
         <di:waypoint x="1113" y="1391" />
         <di:waypoint x="1163" y="1391" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0nr2z5d_di" bpmnElement="Association_0nr2z5d">
-        <di:waypoint x="1514" y="1328" />
-        <di:waypoint x="1274" y="1295" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0q5hfll_di" bpmnElement="SequenceFlow_0q5hfll">
         <di:waypoint x="314" y="1393" />
@@ -2813,6 +2704,10 @@
         <di:waypoint x="916" y="2809" />
         <di:waypoint x="1788" y="2809" />
         <di:waypoint x="1788" y="2663" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1g2f2dq_di" bpmnElement="MessageFlow_1g2f2dq">
+        <di:waypoint x="974" y="964" />
+        <di:waypoint x="974" y="2108" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
