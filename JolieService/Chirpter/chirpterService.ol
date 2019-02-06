@@ -80,7 +80,7 @@ main {
 							if( global.users[i].chirpStream[j].chirpStreamId == request.chirpID ) {
 								getCurrentDateTime@Time()(tmp.pTime);
 								tmp.msg = request.msg;
-								println@Console(tmp.msg+": chirp published by "+global.users[i].name+" in date "+tmp.time + "in stream "+global.users[i].chirpStream[j].chirpStreamId )();
+								println@Console(tmp.msg+": chirp published by "+global.users[i].name+" in date "+tmp.pTime + "in stream "+global.users[i].chirpStream[j].chirpStreamId )();
 								global.users[i].chirpStream[j].chirp[#global.users[i].chirpStream[j].chirp] << tmp;
 								response.response = "{status: published}"
 							}
