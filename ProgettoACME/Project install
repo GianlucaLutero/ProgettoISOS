@@ -1,3 +1,4 @@
 - Importare i file war all'interno della directory ACME camunda services all'interno di camunda-bpm
 - Avviare attraverso l'interprete jolie i servizi contenuti nella directory External services, in particolare i file eseguibili sono: bankService.ol, chirpterService.ol e gisService.ol  
 - Per il corretto funzionamento assicurarsi di poter accedere al database
+- I bpmn usati nella documentazione si trovano nelle relative directory BPMN e coreografie
